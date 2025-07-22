@@ -1,16 +1,106 @@
-# Docker-based Drupal stack
+# Internet MLJ - Projet Drupal
 
-[![Build Status](https://github.com/wodby/docker4drupal/workflows/Run%20tests/badge.svg)](https://github.com/wodby/docker4drupal/actions)
+## Prérequis
 
-## Introduction
+- Docker et Docker Compose
+- WSL2 (si sur Windows)
 
-Docker4Drupal is a set of docker images optimized for Drupal. Use
-`compose.yml` file from the [latest stable release](https://github.com/wodby/docker4drupal/releases) to spin up local environment on Linux, Mac OS X and Windows.
+## Installation sur un nouveau PC
 
-* Read the docs on [**how to use**](https://wodby.com/docs/stacks/drupal/local#usage)
-* Ask questions on [Discord](http://discord.wodby.com/)
-* Ask questions on [Slack](http://slack.wodby.com/)
-* Follow [@wodbycloud](https://twitter.com/wodbycloud) for future announcements
+1. **Cloner le projet**
+```bash
+git clone <votre-repo-url>
+cd internet-mlj
+```
+
+2. **Copier le fichier d'environnement**
+```bash
+cp .env.example .env
+```
+
+3. **Ajuster les variables dans .env si nécessaire**
+```bash
+PROJECT_NAME=internet-mlj
+PROJECT_BASE_URL=localhost
+PROJECT_PORT=8000
+
+DB_NAME=drupal
+DB_USER=drupal
+DB_PASSWORD=drupal
+DB_ROOT_PASSWORD=password
+DB_HOST=mariadb
+DB_PORT=3306
+DB_DRIVER=mysql
+```
+
+4. **Lancer les conteneurs**
+```bash
+docker-compose up -d
+```
+
+5. **Installer les dépendances Composer**
+```bash
+docker-compose exec php composer install
+```
+
+6. **Configurer Drupal**
+- Aller sur http://localhost:8000
+- Suivre l'installation Drupal
+- Utiliser les paramètres de base de données du .env
+
+## Commandes utiles
+
+```bash
+# Démarrer les conteneurs
+docker-compose up -d
+
+# Arrêter les conteneurs
+docker-compose down
+
+# Voir les logs
+docker-compose logs
+
+# Accéder au conteneur PHP
+docker-compose exec php bash
+
+# Utiliser Drush
+docker-compose exec php drush status
+
+# Reconstruire les conteneurs
+docker-compose up -d --build
+```
+
+## Accès
+
+- **Site web**: http://localhost:8000
+- **Mailpit**: http://localhost:8025
+
+## Modules installés
+
+- **pathauto** - Génération automatique d'URL
+- **admin_toolbar** - Barre d'administration améliorée
+- **views_serialization_pager** - Pagination pour les vues API
+- **drush** - Outil en ligne de commande Drupal
+- **devel** (dev) - Outils de développement
+
+## Structure du projet
+
+```
+web/            # Racine web de Drupal
+├── core/       # Coeur Drupal (non versionné)
+├── modules/    # Modules Drupal
+│   ├── contrib/  # Modules communautaires
+│   └── custom/   # Modules personnalisés
+├── themes/     # Thèmes Drupal
+├── sites/      # Configuration des sites
+└── ...
+
+vendor/         # Dépendances Composer (non versionné)
+docker-compose.yml  # Configuration Docker
+.env            # Variables d'environnement (non versionné)
+composer.json   # Dépendances PHP
+.gitignore      # Fichiers ignorés par Git
+```
 
 ## Stack
 
