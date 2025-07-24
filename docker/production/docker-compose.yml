@@ -1,0 +1,16 @@
+include:
+  - ../docker-compose.base.yml
+
+services:
+  mariadb:
+    container_name: "mariadb_prod"
+    restart: unless-stopped
+    
+  php:
+    image: wodby/drupal-php:8.3-4.69.2  # Version stable pour la production
+    container_name: "php_prod"
+    restart: unless-stopped
+    
+  nginx:
+    container_name: "nginx_prod"
+    restart: unless-stopped

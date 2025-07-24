@@ -1,0 +1,15 @@
+include:
+  - ../docker-compose.base.yml
+
+services:
+  mariadb:
+    container_name: "mariadb_preprod"
+    restart: unless-stopped
+    
+  php:
+    container_name: "php_preprod"
+    restart: unless-stopped
+    
+  nginx:
+    container_name: "nginx_preprod"
+    restart: unless-stopped

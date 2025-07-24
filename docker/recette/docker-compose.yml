@@ -1,0 +1,15 @@
+include:
+  - ../docker-compose.base.yml
+
+services:
+  mariadb:
+    container_name: "mariadb_recette"
+    restart: unless-stopped
+    
+  php:
+    container_name: "php_recette"
+    restart: unless-stopped
+    
+  nginx:
+    container_name: "nginx_recette"
+    restart: unless-stopped
