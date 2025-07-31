@@ -1,0 +1,8 @@
+uuid: 322c5712-9d8e-4418-af08-c471ba0a06a9
+langcode: fr
+status: true
+dependencies: {  }
+id: menu-nextjs
+label: 'menu nextjs'
+description: ''
+locked: false

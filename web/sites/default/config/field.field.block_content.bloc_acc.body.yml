@@ -1,0 +1,30 @@
+uuid: 1d3d21e8-ccb2-4e08-b51c-60530be64d59
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.bloc_acc
+    - field.storage.block_content.body
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.restricted_html
+  module:
+    - text
+id: block_content.bloc_acc.body
+field_name: body
+entity_type: block_content
+bundle: bloc_acc
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats:
+    - basic_html
+    - restricted_html
+    - full_html
+field_type: text_with_summary

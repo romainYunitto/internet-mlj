@@ -1,0 +1,11 @@
+uuid: 4a2e2f43-5007-47e5-aea2-3896bfbe5f26
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.vie
+id: node.vie
+target_entity_type_id: node
+target_bundle: vie
+default_langcode: site_default
+language_alterable: false

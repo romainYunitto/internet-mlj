@@ -1,0 +1,10 @@
+uuid: ed23d2b8-68d4-4c66-a176-c16c812bc951
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: SAeixlV7Djy_Ggv_1P95TiqD4KUihA5icvU521tA84Y
+id: short
+label: 'Date courte par défaut'
+locked: false
+pattern: "j M Y - H:i\r\ndans le contexte : format de date PHP"

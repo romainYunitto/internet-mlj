@@ -1,0 +1,19 @@
+uuid: 138422a1-77c0-41c7-b16d-d93b599304da
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.bloc_acc
+    - field.storage.block_content.field_titre
+id: block_content.bloc_acc.field_titre
+field_name: field_titre
+entity_type: block_content
+bundle: bloc_acc
+label: titre
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

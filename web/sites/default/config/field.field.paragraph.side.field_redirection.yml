@@ -1,0 +1,23 @@
+uuid: e67a3e48-1fac-4c83-ad4d-7fa46ce4b846
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_redirection
+    - paragraphs.paragraphs_type.side
+  module:
+    - link
+id: paragraph.side.field_redirection
+field_name: field_redirection
+entity_type: paragraph
+bundle: side
+label: redirection
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

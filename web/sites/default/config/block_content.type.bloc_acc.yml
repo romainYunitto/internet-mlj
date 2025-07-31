@@ -1,0 +1,8 @@
+uuid: ae4f4164-8448-4ccf-9049-785452cc406a
+langcode: fr
+status: true
+dependencies: {  }
+id: bloc_acc
+label: 'bloc acc'
+revision: false
+description: null
