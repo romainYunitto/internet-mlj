@@ -32,16 +32,16 @@ ssh "$SERVER_USER@$SERVER_HOST" << 'ENDSSH'
 cd /home/votre-utilisateur/drupal
 
 # Arrêt des conteneurs existants
-docker-compose -f docker/preprod/docker-compose.yml --env-file docker/preprod/.env down || true
+sudo docker compose -f docker/preprod/docker-compose.yml --env-file docker/preprod/.env down || true
 
 # Pull des images
-docker-compose -f docker/preprod/docker-compose.yml --env-file docker/preprod/.env pull
+sudo docker compose -f docker/preprod/docker-compose.yml --env-file docker/preprod/.env pull
 
 # Démarrage des conteneurs
-docker-compose -f docker/preprod/docker-compose.yml --env-file docker/preprod/.env up -d
+sudo docker compose -f docker/preprod/docker-compose.yml --env-file docker/preprod/.env up -d
 
 # Vérification
-docker-compose -f docker/preprod/docker-compose.yml --env-file docker/preprod/.env ps
+sudo docker compose -f docker/preprod/docker-compose.yml --env-file docker/preprod/.env ps
 ENDSSH
 
 # Nettoyage

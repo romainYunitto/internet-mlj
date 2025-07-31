@@ -40,8 +40,9 @@ services:
       NGINX_SERVER_NAME: ${SERVER_NAME:-"_"}
     volumes:
       - ${PROJECT_ROOT}:/var/www/html:cached
-    ports:
-      - "${NGINX_PORT}:80"
+    # Port exposé seulement pour le reverse proxy SSL en local
+    expose:
+      - "80"
 
   mailpit:
     image: axllent/mailpit

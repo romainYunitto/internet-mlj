@@ -28,7 +28,7 @@ services:
 
   nginx:
     image: wodby/nginx:1.29-5.44.2
-    container_name: "nginx"
+    container_name: "nginx_local"
     depends_on:
       - php
     environment:
@@ -37,11 +37,12 @@ services:
       NGINX_BACKEND_HOST: php
       NGINX_SERVER_ROOT: /var/www/html/web
       NGINX_VHOST_PRESET: drupal11
-      NGINX_SERVER_NAME: "_"
+      NGINX_SERVER_NAME: "admin.mlj.fr"
     volumes:
       - .:/var/www/html:cached
-    ports:
-      - "8000:80"
+    # Port exposé seulement pour le reverse proxy SSL
+    expose:
+      - "80"
 
   mailpit:
     image: axllent/mailpit
