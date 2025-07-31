@@ -8,9 +8,9 @@ set -e
 echo "🚀 Démarrage du déploiement préprod complet..."
 
 # Variables
-INTERNET_MLJ_PATH="/home/moebius/drupal/internet-mlj"
-MLJ_WEB_PATH="/home/moebius/drupal/MLJ-web"
-INFRA_MLJ_PATH="/home/moebius/infra-mlj"
+INTERNET_MLJ_PATH="/data/docker/internetmantes/internet-mlj"
+MLJ_WEB_PATH="/data/docker/internetmantes/MLJ-web"
+INFRA_MLJ_PATH="/data/docker/internetmantes/infra-mlj"
 
 # Couleurs pour les logs
 RED='\033[0;31m'
