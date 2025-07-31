@@ -1,7 +1,7 @@
 services:
   mariadb:
     image: wodby/mariadb:11.4-3.32.2
-    container_name: "mariadb_preprod"
+    container_name: "preprod-${PROJECT_NAME}_mariadb"
     stop_grace_period: 30s
     restart: unless-stopped
     environment:
@@ -14,7 +14,7 @@ services:
 
   php:
     image: wodby/drupal-php:8.3-dev-4.69.2
-    container_name: "php_preprod"
+    container_name: "preprod-${PROJECT_NAME}_php"
     restart: unless-stopped
     environment:
       DB_HOST: ${DB_HOST}
@@ -29,7 +29,7 @@ services:
 
   nginx:
     image: wodby/nginx:1.29-5.44.2
-    container_name: "nginx_preprod"
+    container_name: "preprod-${PROJECT_NAME}_nginx"
     restart: unless-stopped
     depends_on:
       - php
