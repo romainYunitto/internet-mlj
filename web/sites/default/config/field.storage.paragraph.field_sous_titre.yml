@@ -1,0 +1,21 @@
+uuid: 827f4a28-fc2d-45d7-bf9f-06cc66ce8bfc
+langcode: fr
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_sous_titre
+field_name: field_sous_titre
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

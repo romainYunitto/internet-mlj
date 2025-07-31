@@ -1,0 +1,49 @@
+uuid: db1b4d49-7b26-4852-ac49-9acf7923792c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.bloc_acc
+    - field.field.block_content.bloc_acc.body
+    - field.field.block_content.bloc_acc.field_titre
+  module:
+    - text
+id: block_content.bloc_acc.default
+targetEntityType: block_content
+bundle: bloc_acc
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 26
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_titre:
+    type: string_textfield
+    weight: 27
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,74 @@
+uuid: fe5012cf-fbe8-4505-aed9-f61dc050d800
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.vie.field_accordeon
+    - field.field.node.vie.field_card
+    - field.field.node.vie.field_classique
+    - field.field.node.vie.field_image
+    - field.field.node.vie.field_sous_titre
+    - image.style.wide
+    - node.type.vie
+  module:
+    - entity_reference_revisions
+    - image
+    - paragraphs
+    - user
+id: node.vie.default
+targetEntityType: node
+bundle: vie
+mode: default
+content:
+  field_accordeon:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  field_card:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 113
+    region: content
+  field_classique:
+    type: paragraph_summary
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 112
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: wide
+      image_loading:
+        attribute: eager
+    third_party_settings: {  }
+    weight: -1
+    region: content
+  field_sous_titre:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

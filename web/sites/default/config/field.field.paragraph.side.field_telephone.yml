@@ -1,0 +1,19 @@
+uuid: 393c8c9e-c075-4c06-8e06-b01f045a31bd
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_telephone
+    - paragraphs.paragraphs_type.side
+id: paragraph.side.field_telephone
+field_name: field_telephone
+entity_type: paragraph
+bundle: side
+label: Télephone
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

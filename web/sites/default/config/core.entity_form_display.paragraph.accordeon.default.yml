@@ -1,0 +1,34 @@
+uuid: b77a07f7-07ea-45a6-9e9d-48ca45c20c0e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.accordeon.field_body
+    - field.field.paragraph.accordeon.field_titre
+    - paragraphs.paragraphs_type.accordeon
+  module:
+    - text
+id: paragraph.accordeon.default
+targetEntityType: paragraph
+bundle: accordeon
+mode: default
+content:
+  field_body:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_titre:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

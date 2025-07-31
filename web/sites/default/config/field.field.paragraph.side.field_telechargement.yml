@@ -1,0 +1,27 @@
+uuid: f7ceb587-5ae6-41e4-8604-421f0cfae5cb
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_telechargement
+    - paragraphs.paragraphs_type.side
+  module:
+    - file
+id: paragraph.side.field_telechargement
+field_name: field_telechargement
+entity_type: paragraph
+bundle: side
+label: telechargement
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt pdf doc docx'
+  max_filesize: '20 MB'
+  description_field: false
+field_type: file
