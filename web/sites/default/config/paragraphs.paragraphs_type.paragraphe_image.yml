@@ -1,0 +1,10 @@
+uuid: 5963be9c-2cab-49f6-a629-4e0e54524574
+langcode: fr
+status: true
+dependencies: {  }
+id: paragraphe_image
+label: 'paragraphe image'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -979,7 +979,7 @@ display:
         options:
           field_options:
             field_image:
-              alias: ''
+              alias: imageUrl
               raw_output: false
             field_sous_titre:
               alias: ''
@@ -987,10 +987,22 @@ display:
             title:
               alias: ''
               raw_output: false
-            field_body:
+            field_classique_export:
               alias: ''
               raw_output: false
-            field_titre:
+            field_accordeon_export:
+              alias: ''
+              raw_output: false
+            field_card_export:
+              alias: ''
+              raw_output: false
+            type:
+              alias: ''
+              raw_output: false
+            nid:
+              alias: ''
+              raw_output: false
+            field_menu_parent:
               alias: ''
               raw_output: false
       defaults:
