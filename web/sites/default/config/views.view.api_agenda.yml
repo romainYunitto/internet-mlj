@@ -865,9 +865,12 @@ display:
               alias: ''
               raw_output: false
             field_image:
-              alias: ''
+              alias: imageUrl
               raw_output: false
             field_informations_horaire:
+              alias: ''
+              raw_output: false
+            field_categorie_export:
               alias: ''
               raw_output: false
       display_extenders: {  }
