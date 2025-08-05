@@ -1,0 +1,80 @@
+uuid: 54c74ff5-36fd-4457-a1b1-df375620a9ab
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.accueil.field_actualite
+    - field.field.node.accueil.field_agendaa
+    - field.field.node.accueil.field_amenagement
+    - field.field.node.accueil.field_decouvrir
+    - field.field.node.accueil.field_publication
+    - field.field.node.accueil.field_video
+    - node.type.accueil
+  module:
+    - link
+    - user
+id: node.accueil.default
+targetEntityType: node
+bundle: accueil
+mode: default
+content:
+  field_actualite:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_agendaa:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_amenagement:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_decouvrir:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_publication:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_video:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

@@ -1,0 +1,40 @@
+uuid: 23c330a8-293b-4825-bd80-8e9c9c4212ee
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.publication.field_categorie_publication
+    - field.field.node.publication.field_image
+    - field.field.node.publication.field_magazine
+    - image.style.medium
+    - node.type.publication
+  module:
+    - image
+    - user
+id: node.publication.teaser
+targetEntityType: node
+bundle: publication
+mode: teaser
+content:
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: -1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_categorie_publication: true
+  field_magazine: true
+  langcode: true
+  search_api_excerpt: true

@@ -1,16 +1,21 @@
-uuid: db1b4d49-7b26-4852-ac49-9acf7923792c
+uuid: dded9a27-a3e2-4df2-ae70-a5ea47c6a630
 langcode: fr
 status: true
 dependencies:
   config:
-    - block_content.type.bloc_acc
-    - field.field.block_content.bloc_acc.body
-    - field.field.block_content.bloc_acc.field_titre
+    - block_content.type.decouvrir
+    - field.field.block_content.decouvrir.body
+    - field.field.block_content.decouvrir.field_image
+    - field.field.block_content.decouvrir.field_redirection
+    - field.field.block_content.decouvrir.field_titre
+    - image.style.thumbnail
   module:
+    - image
+    - link
     - text
-id: block_content.bloc_acc.default
+id: block_content.decouvrir.default
 targetEntityType: block_content
-bundle: bloc_acc
+bundle: decouvrir
 mode: default
 content:
   body:
@@ -22,6 +27,22 @@ content:
       summary_rows: 3
       placeholder: ''
       show_summary: false
+    third_party_settings: {  }
+  field_image:
+    type: image_image
+    weight: 29
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_redirection:
+    type: link_default
+    weight: 28
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_titre:
     type: string_textfield

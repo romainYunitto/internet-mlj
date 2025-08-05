@@ -1,0 +1,21 @@
+uuid: 3bc33563-c3c1-46e5-ba89-24c67cd92578
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_de_fin
+    - node.type.agenda
+  module:
+    - datetime
+id: node.agenda.field_date_de_fin
+field_name: field_date_de_fin
+entity_type: node
+bundle: agenda
+label: 'date de fin'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,28 @@
+uuid: 54d3bfdd-ac58-4fa0-a7ca-1e162c4950af
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.restricted_html
+    - paragraphs.paragraphs_type.bloc_actualite
+  module:
+    - text
+id: paragraph.bloc_actualite.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: bloc_actualite
+label: body
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - restricted_html
+    - full_html
+field_type: text_long
