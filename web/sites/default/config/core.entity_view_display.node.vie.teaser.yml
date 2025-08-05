@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.vie.field_card
     - field.field.node.vie.field_classique
     - field.field.node.vie.field_image
+    - field.field.node.vie.field_menu_parent
     - field.field.node.vie.field_sous_titre
     - image.style.medium
     - node.type.vie
@@ -39,6 +40,7 @@ hidden:
   field_accordeon: true
   field_card: true
   field_classique: true
+  field_menu_parent: true
   field_sous_titre: true
   langcode: true
   search_api_excerpt: true
