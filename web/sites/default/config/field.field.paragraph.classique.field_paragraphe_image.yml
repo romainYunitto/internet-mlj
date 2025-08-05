@@ -1,0 +1,43 @@
+uuid: bbe4bcc3-10d3-4292-90bb-2ec02e4db4e5
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_paragraphe_image
+    - paragraphs.paragraphs_type.classique
+    - paragraphs.paragraphs_type.paragraphe_image
+  module:
+    - entity_reference_revisions
+id: paragraph.classique.field_paragraphe_image
+field_name: field_paragraphe_image
+entity_type: paragraph
+bundle: classique
+label: 'paragraphe image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      paragraphe_image: paragraphe_image
+    negate: 0
+    target_bundles_drag_drop:
+      accordeon:
+        weight: 7
+        enabled: false
+      bloc_actualite:
+        weight: 8
+        enabled: false
+      classique:
+        weight: 9
+        enabled: false
+      paragraphe_image:
+        weight: 6
+        enabled: true
+      side:
+        weight: 10
+        enabled: false
+field_type: entity_reference_revisions
