@@ -11,6 +11,7 @@ dependencies:
     - field.storage.node.field_sous_titre
     - node.type.vie
   module:
+    - null
     - entity_reference_revisions
     - image
     - node
@@ -488,13 +489,13 @@ display:
           alter:
             alter_text: false
             text: ''
-            make_link: false
-            path: ''
+            make_link: true
+            path: '/jsonapi/node/{{ nid }}'
             absolute: false
             external: false
             replace_spaces: false
             path_case: none
-            trim_whitespace: false
+            trim_whitespace: true
             alt: ''
             rel: ''
             link_class: ''
@@ -508,7 +509,7 @@ display:
             more_link: false
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
+            strip_tags: true
             trim: false
             preserve_tags: ''
             html: false
@@ -999,7 +1000,7 @@ display:
               alias: ''
               raw_output: false
             nid:
-              alias: ''
+              alias: url
               raw_output: false
             field_menu_parent:
               alias: ''
