@@ -1,0 +1,11 @@
+uuid: a22a2484-1e21-4350-9c3f-2d023e1321a7
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.amenagement
+id: block_content.amenagement
+target_entity_type_id: block_content
+target_bundle: amenagement
+default_langcode: site_default
+language_alterable: false

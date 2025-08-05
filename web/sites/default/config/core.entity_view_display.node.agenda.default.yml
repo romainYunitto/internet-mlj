@@ -1,0 +1,101 @@
+uuid: 48353010-01a1-421d-b59f-7c61b7d827db
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.agenda.field_accordeon
+    - field.field.node.agenda.field_adresse
+    - field.field.node.agenda.field_categorie
+    - field.field.node.agenda.field_date
+    - field.field.node.agenda.field_date_de_fin
+    - field.field.node.agenda.field_entete
+    - field.field.node.agenda.field_image
+    - field.field.node.agenda.field_informations_horaire
+    - image.style.wide
+    - node.type.agenda
+  module:
+    - datetime
+    - entity_reference_revisions
+    - image
+    - text
+    - user
+id: node.agenda.default
+targetEntityType: node
+bundle: agenda
+mode: default
+content:
+  field_accordeon:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  field_adresse:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_categorie:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 112
+    region: content
+  field_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_date_de_fin:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_entete:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: wide
+      image_loading:
+        attribute: eager
+    third_party_settings: {  }
+    weight: -1
+    region: content
+  field_informations_horaire:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

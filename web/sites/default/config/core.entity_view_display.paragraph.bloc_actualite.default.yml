@@ -1,0 +1,45 @@
+uuid: ff0dde06-a935-4e77-b711-6f6cc034753a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bloc_actualite.field_body
+    - field.field.paragraph.bloc_actualite.field_image
+    - field.field.paragraph.bloc_actualite.field_sous_titre
+    - paragraphs.paragraphs_type.bloc_actualite
+  module:
+    - image
+    - text
+id: paragraph.bloc_actualite.default
+targetEntityType: paragraph
+bundle: bloc_actualite
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_sous_titre:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  search_api_excerpt: true

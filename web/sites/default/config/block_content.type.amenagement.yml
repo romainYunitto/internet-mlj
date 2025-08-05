@@ -1,8 +1,8 @@
-uuid: ae4f4164-8448-4ccf-9049-785452cc406a
+uuid: 90d117db-0670-4a18-aba4-4722a77310be
 langcode: fr
 status: true
 dependencies: {  }
-id: bloc_acc
-label: 'bloc acc'
+id: amenagement
+label: Amenagement
 revision: false
 description: null

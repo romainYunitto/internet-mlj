@@ -1,0 +1,29 @@
+uuid: ca1cf58d-d0fb-41b3-ac69-12790d7fa8e5
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_publication
+    - node.type.accueil
+    - node.type.publication
+id: node.accueil.field_publication
+field_name: field_publication
+entity_type: node
+bundle: accueil
+label: Publication
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      publication: publication
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

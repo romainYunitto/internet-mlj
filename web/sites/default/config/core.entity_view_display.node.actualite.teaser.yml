@@ -1,0 +1,42 @@
+uuid: 13a5f582-f8f7-47ba-9820-7dc12bd28b82
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.actualite.field_entete
+    - field.field.node.actualite.field_image
+    - field.field.node.actualite.field_paragrahe_actualite
+    - field.field.node.actualite.field_tag
+    - image.style.medium
+    - node.type.actualite
+  module:
+    - image
+    - user
+id: node.actualite.teaser
+targetEntityType: node
+bundle: actualite
+mode: teaser
+content:
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: -1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_entete: true
+  field_paragrahe_actualite: true
+  field_tag: true
+  langcode: true
+  search_api_excerpt: true

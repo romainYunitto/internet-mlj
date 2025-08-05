@@ -1,0 +1,9 @@
+uuid: a4d2566a-2cf7-4343-a682-c7d41cb92920
+langcode: fr
+status: true
+dependencies: {  }
+name: 'tag actualité'
+vid: tag_actualite
+description: 'catégorie des articles'
+weight: 0
+new_revision: false

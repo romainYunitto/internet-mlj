@@ -1,0 +1,60 @@
+uuid: 2a2a3c96-8ce8-4c1a-8996-205711ff3a11
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.decouvrir
+    - field.field.block_content.decouvrir.body
+    - field.field.block_content.decouvrir.field_image
+    - field.field.block_content.decouvrir.field_redirection
+    - field.field.block_content.decouvrir.field_titre
+  module:
+    - image
+    - link
+    - text
+id: block_content.decouvrir.default
+targetEntityType: block_content
+bundle: decouvrir
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_redirection:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_titre:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

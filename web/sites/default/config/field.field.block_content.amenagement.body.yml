@@ -1,0 +1,24 @@
+uuid: b59a7068-f223-4853-9069-c77c5ac11e4a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.amenagement
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.amenagement.body
+field_name: body
+entity_type: block_content
+bundle: amenagement
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

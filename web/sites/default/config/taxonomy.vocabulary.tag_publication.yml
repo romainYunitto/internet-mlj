@@ -1,0 +1,9 @@
+uuid: 20e03e0d-f108-434b-a10f-ea1268a72688
+langcode: fr
+status: true
+dependencies: {  }
+name: 'tag publication'
+vid: tag_publication
+description: null
+weight: 0
+new_revision: false
