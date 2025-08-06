@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.publication.field_categorie_publication
     - field.field.node.publication.field_image
     - field.field.node.publication.field_magazine
+    - field.field.node.publication.field_url
     - image.style.wide
     - node.type.publication
   module:
@@ -43,6 +44,14 @@ content:
       use_description_as_link_text: true
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_url:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
     region: content
   links:
     settings: {  }

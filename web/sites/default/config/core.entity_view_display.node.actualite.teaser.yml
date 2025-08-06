@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.actualite.field_image
     - field.field.node.actualite.field_paragrahe_actualite
     - field.field.node.actualite.field_tag
+    - field.field.node.actualite.field_url
     - image.style.medium
     - node.type.actualite
   module:
@@ -38,5 +39,6 @@ hidden:
   field_entete: true
   field_paragrahe_actualite: true
   field_tag: true
+  field_url: true
   langcode: true
   search_api_excerpt: true

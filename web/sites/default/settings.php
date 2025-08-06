@@ -877,3 +877,4 @@ $settings['trusted_host_patterns'] = array(
     '.*'
 );
 $config['jsonapi_extras.jsonapi_resource_config.menu_link_content--menu_link_content']['disabled'] = FALSE;
+$config['system.logging']['error_level'] = "all";

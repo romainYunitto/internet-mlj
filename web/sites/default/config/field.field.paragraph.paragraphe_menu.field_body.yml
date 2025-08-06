@@ -1,0 +1,28 @@
+uuid: 343a4907-4807-4707-81f3-8b79ec848a21
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.restricted_html
+    - paragraphs.paragraphs_type.paragraphe_menu
+  module:
+    - text
+id: paragraph.paragraphe_menu.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: paragraphe_menu
+label: body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - restricted_html
+    - full_html
+field_type: text_long

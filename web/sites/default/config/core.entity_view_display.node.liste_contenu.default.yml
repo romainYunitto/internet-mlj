@@ -1,0 +1,41 @@
+uuid: 2ad69783-deff-4b95-a8ff-b19fce52731a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.liste_contenu.field_reference_contenu
+    - field.field.node.liste_contenu.field_url
+    - node.type.liste_contenu
+  module:
+    - entity_reference_revisions
+    - user
+id: node.liste_contenu.default
+targetEntityType: node
+bundle: liste_contenu
+mode: default
+content:
+  field_reference_contenu:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_url:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

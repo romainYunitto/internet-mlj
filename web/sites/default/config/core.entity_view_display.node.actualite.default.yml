@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.actualite.field_image
     - field.field.node.actualite.field_paragrahe_actualite
     - field.field.node.actualite.field_tag
+    - field.field.node.actualite.field_url
     - image.style.wide
     - node.type.actualite
   module:
@@ -53,6 +54,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_url:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
     region: content
   links:
     settings: {  }
