@@ -1,0 +1,56 @@
+uuid: e7dd4fff-3891-426e-8a9c-51670012b2e0
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.paragraphe_menu.field_body
+    - field.field.paragraph.paragraphe_menu.field_image_paragraphe
+    - field.field.paragraph.paragraphe_menu.field_reference_contenu
+    - field.field.paragraph.paragraphe_menu.field_titre
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.paragraphe_menu
+  module:
+    - image
+    - text
+id: paragraph.paragraphe_menu.default
+targetEntityType: paragraph
+bundle: paragraphe_menu
+mode: default
+content:
+  field_body:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_image_paragraphe:
+    type: image_image
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_reference_contenu:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_titre:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

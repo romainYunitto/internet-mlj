@@ -1,0 +1,31 @@
+uuid: 39d7a013-0dc9-4aef-8c80-5936d8f7cedf
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_reference_contenu
+    - node.type.liste_contenu
+    - node.type.vie
+    - paragraphs.paragraphs_type.paragraphe_menu
+id: paragraph.paragraphe_menu.field_reference_contenu
+field_name: field_reference_contenu
+entity_type: paragraph
+bundle: paragraphe_menu
+label: 'reference contenu'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      vie: vie
+      liste_contenu: liste_contenu
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: vie
+field_type: entity_reference

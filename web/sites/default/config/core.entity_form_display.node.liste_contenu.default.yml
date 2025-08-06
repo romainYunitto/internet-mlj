@@ -1,23 +1,17 @@
-uuid: a922ce31-a728-49af-a019-5e89aa64257f
+uuid: a1eee23d-d6e8-4925-9e21-15141ee71598
 langcode: fr
 status: true
 dependencies:
   config:
-    - field.field.node.actualite.field_entete
-    - field.field.node.actualite.field_image
-    - field.field.node.actualite.field_paragrahe_actualite
-    - field.field.node.actualite.field_tag
-    - field.field.node.actualite.field_url
-    - image.style.thumbnail
-    - node.type.actualite
+    - field.field.node.liste_contenu.field_reference_contenu
+    - field.field.node.liste_contenu.field_url
+    - node.type.liste_contenu
   module:
-    - image
     - paragraphs
     - path
-    - text
-id: node.actualite.default
+id: node.liste_contenu.default
 targetEntityType: node
-bundle: actualite
+bundle: liste_contenu
 mode: default
 content:
   created:
@@ -26,25 +20,9 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_entete:
-    type: text_textarea
-    weight: 124
-    region: content
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-  field_image:
-    type: image_image
-    weight: 1
-    region: content
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-  field_paragrahe_actualite:
+  field_reference_contenu:
     type: paragraphs
-    weight: 123
+    weight: 121
     region: content
     settings:
       title: Paragraphe
@@ -59,16 +37,6 @@ content:
       features:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
-    third_party_settings: {  }
-  field_tag:
-    type: entity_reference_autocomplete
-    weight: 122
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   field_url:
     type: string_textfield

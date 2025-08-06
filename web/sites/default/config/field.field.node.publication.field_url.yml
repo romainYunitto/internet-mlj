@@ -1,0 +1,19 @@
+uuid: 059ba9c7-e4eb-475c-a8b5-6718c3694f65
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_url
+    - node.type.publication
+id: node.publication.field_url
+field_name: field_url
+entity_type: node
+bundle: publication
+label: url
+description: 'url de la page doit commencer par / exemple /a-propos'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

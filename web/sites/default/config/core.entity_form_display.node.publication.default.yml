@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.publication.field_categorie_publication
     - field.field.node.publication.field_image
     - field.field.node.publication.field_magazine
+    - field.field.node.publication.field_url
     - image.style.thumbnail
     - node.type.publication
   module:
@@ -47,6 +48,14 @@ content:
     region: content
     settings:
       progress_indicator: throbber
+    third_party_settings: {  }
+  field_url:
+    type: string_textfield
+    weight: 125
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select
