@@ -1,14 +1,14 @@
-uuid: c0c29e50-6c52-4e6a-bca2-94c2f7e74f26
+uuid: 6216fc9d-64ea-407e-bae6-ada4355bf5b8
 langcode: fr
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_titre
-    - paragraphs.paragraphs_type.classique
-id: paragraph.classique.field_titre
+    - paragraphs.paragraphs_type.bloc_card
+id: paragraph.bloc_card.field_titre
 field_name: field_titre
 entity_type: paragraph
-bundle: classique
+bundle: bloc_card
 label: titre
 description: ''
 required: false

@@ -1,18 +1,18 @@
-uuid: c6fabd79-41ed-4068-a4e1-f48320520f1c
+uuid: 8247b300-8528-4e67-938f-f37b1382ccfd
 langcode: fr
 status: true
 dependencies:
   config:
-    - field.storage.node.field_card
-    - node.type.vie
+    - field.storage.paragraph.field_bloc_card
+    - paragraphs.paragraphs_type.accordeon
     - paragraphs.paragraphs_type.bloc_card
   module:
     - entity_reference_revisions
-id: node.vie.field_card
-field_name: field_card
-entity_type: node
-bundle: vie
-label: card
+id: paragraph.accordeon.field_bloc_card
+field_name: field_bloc_card
+entity_type: paragraph
+bundle: accordeon
+label: 'bloc card'
 description: ''
 required: false
 translatable: false
@@ -26,7 +26,7 @@ settings:
     negate: 0
     target_bundles_drag_drop:
       accordeon:
-        weight: 5
+        weight: 10
         enabled: false
       bloc_actualite:
         weight: 11
@@ -38,7 +38,7 @@ settings:
         weight: 12
         enabled: false
       classique:
-        weight: 6
+        weight: 13
         enabled: false
       paragraphe_image:
         weight: 14
@@ -47,6 +47,6 @@ settings:
         weight: 15
         enabled: false
       side:
-        weight: 4
+        weight: 16
         enabled: false
 field_type: entity_reference_revisions

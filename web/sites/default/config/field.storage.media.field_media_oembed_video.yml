@@ -1,12 +1,14 @@
-uuid: 9d65269b-24a3-4774-acd8-d43fb66c8879
-langcode: fr
+uuid: 548d92c4-c007-4e86-8d49-fcfd94090ffa
+langcode: en
 status: true
 dependencies:
   module:
-    - paragraphs
-id: paragraph.field_titre
-field_name: field_titre
-entity_type: paragraph
+    - media
+_core:
+  default_config_hash: cNf_852Dq-fNnSaMI4LxL-J6N7bLkHuDbD9EUqOn4_U
+id: media.field_media_oembed_video
+field_name: field_media_oembed_video
+entity_type: media
 type: string
 settings:
   max_length: 255

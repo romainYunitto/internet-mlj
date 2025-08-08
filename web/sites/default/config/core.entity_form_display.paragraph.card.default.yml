@@ -1,0 +1,34 @@
+uuid: 5bfde150-54a7-4cf2-addd-b88076e14b28
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card.field_body
+    - field.field.paragraph.card.field_titre
+    - paragraphs.paragraphs_type.card
+  module:
+    - text
+id: paragraph.card.default
+targetEntityType: paragraph
+bundle: card
+mode: default
+content:
+  field_body:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_titre:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
