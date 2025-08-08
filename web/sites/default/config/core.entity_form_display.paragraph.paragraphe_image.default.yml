@@ -16,11 +16,11 @@ bundle: paragraphe_image
 mode: default
 content:
   field_description:
-    type: text_textfield
+    type: text_textarea
     weight: 2
     region: content
     settings:
-      size: 60
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
   field_image_paragraphe:
