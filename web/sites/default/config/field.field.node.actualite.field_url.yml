@@ -1,4 +1,4 @@
-uuid: c76ec5e8-c464-4aa0-8029-672e4af6f062
+uuid: 04de3663-4c0f-49ed-a679-c8c84179ed71
 langcode: fr
 status: true
 dependencies:
@@ -10,7 +10,7 @@ field_name: field_url
 entity_type: node
 bundle: actualite
 label: url
-description: 'url de la page doit commencer par / exemple /a-propos'
+description: ''
 required: true
 translatable: false
 default_value: {  }
