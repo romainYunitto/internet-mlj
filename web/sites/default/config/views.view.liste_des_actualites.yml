@@ -630,27 +630,6 @@ display:
         - 'config:field.storage.node.field_image'
         - 'config:field.storage.node.field_paragrahe_actualite'
         - 'config:field.storage.node.field_tag'
-  page_1:
-    id: page_1
-    display_title: Page
-    display_plugin: page
-    position: 1
-    display_options:
-      display_extenders: {  }
-      path: liste-des-actualit-s
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - url.query_args
-        - 'user.node_grants:view'
-      tags:
-        - 'config:field.storage.node.field_entete'
-        - 'config:field.storage.node.field_image'
-        - 'config:field.storage.node.field_paragrahe_actualite'
-        - 'config:field.storage.node.field_tag'
   rest_export_2:
     id: rest_export_2
     display_title: 'REST export'
