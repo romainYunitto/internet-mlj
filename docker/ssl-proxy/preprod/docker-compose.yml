@@ -4,13 +4,11 @@ services:
     container_name: ssl_proxy_preprod
     restart: unless-stopped
     ports:
-      - "80:80"
-      - "443:443" 
+      - "8080:80"
+      - "443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ../ssl:/etc/nginx/ssl:ro
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     networks:
       - proxy-network
       - drupal-network
@@ -22,10 +20,10 @@ networks:
     driver: bridge
   drupal-network:
     external: true
-    name: internet-mlj_default
+    name: internet-mlj-preprod_default
   intranet-network:
     external: true
-    name: infra-mlj_drupal
+    name: intra-mlj-preprod_drupal
   nextjs-network:
     external: true
-    name: mlj-web_default
+    name: stagging_default
