@@ -6,11 +6,10 @@ dependencies:
     - block_content.type.amenagement
     - field.field.block_content.amenagement.body
     - field.field.block_content.amenagement.field_image
-    - field.field.block_content.amenagement.field_redirection
+    - field.field.block_content.amenagement.field_lien_amenagement
     - field.field.block_content.amenagement.field_titre
   module:
     - image
-    - link
     - text
 id: block_content.amenagement.default
 targetEntityType: block_content
@@ -35,17 +34,13 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
-  field_redirection:
-    type: link
+  field_lien_amenagement:
+    type: entity_reference_label
     label: above
     settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
+      link: true
     third_party_settings: {  }
-    weight: 2
+    weight: 4
     region: content
   field_titre:
     type: string

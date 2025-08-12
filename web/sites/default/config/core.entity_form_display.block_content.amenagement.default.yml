@@ -6,12 +6,11 @@ dependencies:
     - block_content.type.amenagement
     - field.field.block_content.amenagement.body
     - field.field.block_content.amenagement.field_image
-    - field.field.block_content.amenagement.field_redirection
+    - field.field.block_content.amenagement.field_lien_amenagement
     - field.field.block_content.amenagement.field_titre
     - image.style.thumbnail
   module:
     - image
-    - link
     - text
 id: block_content.amenagement.default
 targetEntityType: block_content
@@ -36,13 +35,15 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-  field_redirection:
-    type: link_default
-    weight: 28
+  field_lien_amenagement:
+    type: entity_reference_autocomplete
+    weight: 30
     region: content
     settings:
-      placeholder_url: ''
-      placeholder_title: ''
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_titre:
     type: string_textfield
