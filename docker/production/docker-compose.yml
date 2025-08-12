@@ -26,6 +26,7 @@ services:
       PHP_FPM_GROUP: wodby
     volumes:
       - ${PROJECT_ROOT}:/var/www/html:cached
+      - files_prod:/var/www/html/web/sites/default/files
 
   nginx:
     image: wodby/nginx:1.29-5.44.2
@@ -42,8 +43,10 @@ services:
       NGINX_SERVER_NAME: ${SERVER_NAME:-"_"}
     volumes:
       - ${PROJECT_ROOT}:/var/www/html:cached
+      - files_prod:/var/www/html/web/sites/default/files
     ports:
       - "${NGINX_PORT}:80"
 
 volumes:
   db_prod:
+  files_prod:

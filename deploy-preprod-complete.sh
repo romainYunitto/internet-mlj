@@ -10,7 +10,7 @@ echo "🚀 Démarrage du déploiement préprod complet..."
 # Variables
 INTERNET_MLJ_PATH="/data/docker/internetmantes/internet-mlj"
 MLJ_WEB_PATH="/data/docker/internetmantes/MLJ-web"
-INFRA_MLJ_PATH="/data/docker/internetmantes/infra-mlj"
+INFRA_MLJ_PATH="/data/docker/internetmantes/intra-mlj"
 
 # Couleurs pour les logs
 RED='\033[0;31m'
@@ -42,20 +42,20 @@ stop_all_services() {
     # Arrêt SSL-proxy
     cd "$INTERNET_MLJ_PATH/docker/ssl-proxy/preprod"
     if [ -f "docker-compose.yml" ]; then
-        docker compose down --remove-orphans || true
+        sudo docker compose down --remove-orphans || true
     fi
     
     # Arrêt Internet-MLJ
     cd "$INTERNET_MLJ_PATH"
-    docker compose -f docker/preprod/docker-compose.yml down --remove-orphans || true
+    sudo docker compose -f docker/preprod/docker-compose.yml down --remove-orphans || true
     
     # Arrêt MLJ-web
     cd "$MLJ_WEB_PATH"
-    docker compose -f docker/stagging/compose.yml down --remove-orphans || true
+    sudo docker compose -f docker/stagging/compose.yml down --remove-orphans || true
     
     # Arrêt Infra-MLJ
     cd "$INFRA_MLJ_PATH"
-    docker compose -f docker/preprod/docker-compose.yml down --remove-orphans || true
+    sudo docker compose -f docker/preprod/docker-compose.yml down --remove-orphans || true
     
     log_success "Services arrêtés"
 }
@@ -67,25 +67,25 @@ start_all_services() {
     # 1. Démarrage Internet-MLJ (Drupal back-office)
     log_info "📝 Démarrage Internet-MLJ (Drupal back-office)..."
     cd "$INTERNET_MLJ_PATH"
-    docker compose -f docker/preprod/docker-compose.yml up -d
+    sudo docker compose -f docker/preprod/docker-compose.yml up -d
     sleep 10
     
     # 2. Démarrage Infra-MLJ (Intranet)
     log_info "🏢 Démarrage Infra-MLJ (Intranet)..."
     cd "$INFRA_MLJ_PATH"
-    docker compose -f docker/preprod/docker-compose.yml up -d
+    sudo docker compose -f docker/preprod/docker-compose.yml up -d
     sleep 10
     
     # 3. Démarrage MLJ-web (NextJS front-office en mode staging)
     log_info "🌐 Démarrage MLJ-web (NextJS front-office)..."
     cd "$MLJ_WEB_PATH"
-    docker compose -f docker/stagging/compose.yml up -d
+    sudo docker compose -f docker/stagging/compose.yml up -d
     sleep 15
     
     # 4. Démarrage SSL-proxy
     log_info "🔒 Démarrage SSL-proxy..."
     cd "$INTERNET_MLJ_PATH/docker/ssl-proxy/preprod"
-    docker compose up -d
+    sudo docker compose up -d
     
     log_success "Tous les services sont démarrés !"
 }
@@ -95,7 +95,7 @@ check_services() {
     log_info "Vérification de l'état des services..."
     
     echo -e "\n${BLUE}=== État des containers ===${NC}"
-    docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+    sudo docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
     
     echo -e "\n${BLUE}=== Vérification des endpoints ===${NC}"
     echo "• SSL-proxy : ports 80 et 443 exposés"
