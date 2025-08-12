@@ -1,7 +1,7 @@
 services:
   mariadb:
     image: wodby/mariadb:11.4-3.32.2
-    container_name: "mariadb"
+    container_name: "mariadb_local"
     stop_grace_period: 30s
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
@@ -9,11 +9,11 @@ services:
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - db:/var/lib/mysql
+      - db_local:/var/lib/mysql
 
   php:
     image: wodby/drupal-php:8.3-dev-4.69.2
-    container_name: "php"
+    container_name: "php_local"
     environment:
       PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailpit:1025
       DB_HOST: ${DB_HOST}
@@ -24,7 +24,7 @@ services:
       PHP_FPM_USER: wodby
       PHP_FPM_GROUP: wodby
     volumes:
-      - .:/var/www/html:cached
+      - ${PROJECT_ROOT}:/var/www/html:cached
 
   nginx:
     image: wodby/nginx:1.29-5.44.2
@@ -33,22 +33,22 @@ services:
       - php
     environment:
       NGINX_STATIC_OPEN_FILE_CACHE: "off"
-      NGINX_ERROR_LOG_LEVEL: debug
+      NGINX_ERROR_LOG_LEVEL: ${NGINX_LOG_LEVEL:-debug}
       NGINX_BACKEND_HOST: php
       NGINX_SERVER_ROOT: /var/www/html/web
       NGINX_VHOST_PRESET: drupal11
-      NGINX_SERVER_NAME: "admin.mlj.fr"
+      NGINX_SERVER_NAME: ${SERVER_NAME:-"_"}
     volumes:
-      - .:/var/www/html:cached
-    # Port exposé seulement pour le reverse proxy SSL
+      - ${PROJECT_ROOT}:/var/www/html:cached
+    # Port exposé seulement pour le reverse proxy SSL en local
     expose:
       - "80"
 
   mailpit:
     image: axllent/mailpit
-    container_name: "mailpit" 
+    container_name: "mailpit_local"
     ports:
       - "8025:8025"
 
 volumes:
-  db:
+  db_local:
