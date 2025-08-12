@@ -1,0 +1,11 @@
+uuid: abe91139-027d-430b-9268-f8b49ad200a5
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.redirection_amenagement
+id: block_content.redirection_amenagement
+target_entity_type_id: block_content
+target_bundle: redirection_amenagement
+default_langcode: site_default
+language_alterable: false

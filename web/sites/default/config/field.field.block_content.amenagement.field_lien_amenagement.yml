@@ -1,0 +1,29 @@
+uuid: 23d34d88-9bb3-4b45-a83d-ba39bcee87df
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.amenagement
+    - block_content.type.redirection_amenagement
+    - field.storage.block_content.field_lien_amenagement
+id: block_content.amenagement.field_lien_amenagement
+field_name: field_lien_amenagement
+entity_type: block_content
+bundle: amenagement
+label: 'lien amenagement'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      redirection_amenagement: redirection_amenagement
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,42 @@
+uuid: fd54509f-3757-481f-b1dd-1f0b3d32edaa
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.redirection_amenagement
+    - field.field.block_content.redirection_amenagement.field_image
+    - field.field.block_content.redirection_amenagement.field_redirection
+  module:
+    - image
+    - link
+id: block_content.redirection_amenagement.default
+targetEntityType: block_content
+bundle: redirection_amenagement
+mode: default
+content:
+  field_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_redirection:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true
