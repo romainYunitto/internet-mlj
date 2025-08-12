@@ -3,10 +3,10 @@ langcode: fr
 status: true
 dependencies:
   config:
+    - field.field.paragraph.side.field_adresse
     - field.field.paragraph.side.field_email
     - field.field.paragraph.side.field_image
     - field.field.paragraph.side.field_redirection
-    - field.field.paragraph.side.field_sous_titre
     - field.field.paragraph.side.field_telechargement
     - field.field.paragraph.side.field_telephone
     - field.field.paragraph.side.field_titre
@@ -20,6 +20,14 @@ targetEntityType: paragraph
 bundle: side
 mode: default
 content:
+  field_adresse:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_email:
     type: basic_string
     label: above
@@ -49,14 +57,6 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 1
-    region: content
-  field_sous_titre:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 4
     region: content
   field_telechargement:
     type: file_default
