@@ -1,0 +1,10 @@
+uuid: ace4f1f2-2dad-4a70-8c84-d0e967e66c20
+langcode: fr
+status: true
+dependencies: {  }
+id: redirection_amenagement
+label: 'redirection amenagement'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }
