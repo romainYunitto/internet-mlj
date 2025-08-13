@@ -6,9 +6,10 @@ dependencies:
     - block_content.type.amenagement
     - field.field.block_content.amenagement.body
     - field.field.block_content.amenagement.field_image
-    - field.field.block_content.amenagement.field_lien_amenagement
+    - field.field.block_content.amenagement.field_redirection_amenagement
     - field.field.block_content.amenagement.field_titre
   module:
+    - entity_reference_revisions
     - image
     - text
 id: block_content.amenagement.default
@@ -34,11 +35,12 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
-  field_lien_amenagement:
-    type: entity_reference_label
+  field_redirection_amenagement:
+    type: entity_reference_revisions_entity_view
     label: above
     settings:
-      link: true
+      view_mode: default
+      link: ''
     third_party_settings: {  }
     weight: 4
     region: content
