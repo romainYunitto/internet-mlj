@@ -11,9 +11,12 @@ process:
   type: { plugin: default_value, default_value: article } # Machine name du type de contenu "Article"
   title: title
   status: { plugin: default_value, default_value: 1 }
-  'body/value': { plugin: html_clean, source: bodytext }
+  'body/value': bodytext
   'body/summary': teaser
   'body/format': { plugin: default_value, default_value: full_html }
+  # Mapping des dates depuis TYPO3 (timestamps Unix)
+  created: pub_date
+  changed: tstamp
   # On laisse Pathauto générer les alias automatiquement
   # path/alias: slug
   'field_image/target_id':

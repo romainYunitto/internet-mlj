@@ -17,10 +17,11 @@ process:
       0: 1  # Non caché = publié
       1: 0  # Caché = non publié
     default_value: 1
-  'body/value':
-    plugin: html_clean
-    source: full_body
+  'body/value': full_body
   'body/format': { plugin: default_value, default_value: full_html }
+  # Mapping des dates depuis TYPO3 (timestamps Unix)
+  created: crdate
+  changed: tstamp
   # On laisse Pathauto générer les alias automatiquement
   # path/alias: slug
   'field_image/target_id':
