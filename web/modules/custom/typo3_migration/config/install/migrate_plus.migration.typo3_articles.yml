@@ -14,15 +14,8 @@ process:
   'body/value': { plugin: html_clean, source: bodytext }
   'body/summary': teaser
   'body/format': { plugin: default_value, default_value: full_html }
-  path/alias:
-    plugin: concat
-    source:
-      - constants/path_prefix
-      - slug
-  path/pathauto:
-    plugin: default_value
-    default_value: 0
-  path/pathauto: { plugin: default_value, default_value: 0 }
+  # On laisse Pathauto générer les alias automatiquement
+  # path/alias: slug
   'field_image/target_id':
     plugin: migration_lookup
     migration: typo3_files # Dépendance sur la migration des fichiers

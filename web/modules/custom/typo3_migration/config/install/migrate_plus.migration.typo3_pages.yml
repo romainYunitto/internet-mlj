@@ -21,8 +21,8 @@ process:
     plugin: html_clean
     source: full_body
   'body/format': { plugin: default_value, default_value: full_html }
-  path/alias: slug
-  path/pathauto: { plugin: default_value, default_value: 0 }
+  # On laisse Pathauto générer les alias automatiquement
+  # path/alias: slug
   'field_image/target_id':
     plugin: migration_lookup
     migration: typo3_files

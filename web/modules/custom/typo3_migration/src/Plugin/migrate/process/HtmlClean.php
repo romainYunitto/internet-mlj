@@ -1,5 +1,5 @@
 <?php
-namespace Drupal\my_typo3_migration\Plugin\migrate\process;
+namespace Drupal\typo3_migration\Plugin\migrate\process;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\Row;
