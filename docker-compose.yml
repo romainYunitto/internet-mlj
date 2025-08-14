@@ -17,7 +17,7 @@ services:
     environment:
       PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailpit:1025
       DB_HOST: ${DB_HOST}
-      DB_USER: ${DB_USER}  
+      DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
       DB_DRIVER: ${DB_DRIVER}
@@ -43,9 +43,15 @@ services:
     ports:
       - "8000:80"
 
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
   mailpit:
     image: axllent/mailpit
-    container_name: "mailpit" 
+    container_name: "mailpit"
     ports:
       - "8025:8025"
 
