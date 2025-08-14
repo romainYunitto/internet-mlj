@@ -1220,6 +1220,8 @@ display:
       relationships: {  }
       display_extenders: {  }
       path: jsonapi/node
+      auth:
+        - oauth2
     cache_metadata:
       max-age: -1
       contexts:
