@@ -70,3 +70,4 @@ yarn-error.log*
 # Drupal settings
 web/sites/default/settings.local.php
 web/sites/default/services.local.yml
+mljolie.sql
