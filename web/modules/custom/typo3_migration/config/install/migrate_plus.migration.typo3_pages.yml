@@ -1,0 +1,37 @@
+id: typo3_pages
+label: '2 - Migration des pages (contenu agrégé via une vue)'
+source:
+  # Utilise le plugin 'table' pointant vers la vue SQL que vous avez créée
+  plugin: table
+  table: drupal_migration_pages
+  key: migrate
+  ids:
+    uid:
+      type: integer
+  columns:
+    - uid: uid
+    - title: title
+    - hidden: hidden
+    - slug: slug
+    - full_body: full_body
+process:
+  type:
+    plugin: default_value
+    default_value: page # Machine name du type de contenu "Page"
+  title: title
+  status:
+    plugin: expression
+    expression: 'row.hidden == 0 ? 1 : 0'
+  'body/value':
+    plugin: html_clean # Utilise votre plugin de nettoyage personnalisé
+    source: full_body
+  'body/format':
+    plugin: default_value
+    default_value: full_html
+  path/alias: slug # Crée l'alias d'URL à partir du champ 'slug'
+  path/pathauto:
+    plugin: default_value
+    default_value: 0 # Désactive Pathauto pour cet élément
+destination:
+  plugin: 'entity:node'
+migration_dependencies: {} # Aucune dépendance de fichier pour simplifier

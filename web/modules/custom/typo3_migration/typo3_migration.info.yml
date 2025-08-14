@@ -1,0 +1,8 @@
+name: 'TYPO3 Migration'
+type: module
+description: 'Module de migration des données depuis TYPO3.'
+core_version_requirement: ^11
+package: Custom
+dependencies:
+  - migrate_plus
+  - migrate_tools

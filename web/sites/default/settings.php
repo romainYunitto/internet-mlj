@@ -863,9 +863,9 @@ $settings['trusted_host_patterns'] = array(
     '.*'
 );$databases['default']['default'] = [
     'host' => 'mariadb',
-    'database' => 'drupal',
-    'username' => 'drupal',
-    'password' => 'drupal',
+    'database' => 'clonedrupal',
+    'username' => 'root',
+    'password' => 'password',
     'driver' => 'mysql',
     'prefix' => '',
 ];

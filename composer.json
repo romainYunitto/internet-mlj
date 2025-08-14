@@ -24,6 +24,8 @@
         "drupal/jsonapi_hypermedia": "^1.10",
         "drupal/jsonapi_menu_items": "^1.2",
         "drupal/menu_breadcrumb": "^2.0",
+        "drupal/migrate_plus": "^6.0",
+        "drupal/migrate_tools": "^6.1",
         "drupal/next": "^2.0",
         "drupal/paragraphs": "^1.19",
         "drupal/pathauto": "^1.13",

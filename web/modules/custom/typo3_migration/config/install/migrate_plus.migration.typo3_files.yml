@@ -1,0 +1,32 @@
+id: typo3_files
+label: '1 - Migration des fichiers (sys_file)'
+source:
+  # Utilise le plugin 'table' qui est disponible
+  plugin: table
+  # Le nom de la table TYPO3 d'où proviennent les métadonnées des fichiers
+  table: sys_file
+  key: migrate
+  ids:
+    uid:
+      type: integer
+  columns:
+    - uid: uid
+    - name: name
+    - identifier: identifier
+process:
+  source_full_path:
+    plugin: concat
+    source:
+      - constants/project_root
+      - constants/file_source_path
+      - identifier
+  uri:
+    plugin: file_copy
+    source: '@source_full_path'
+    destination: 'public://migrated/'
+  filename: name
+destination:
+  plugin: 'entity:file'
+constants:
+  project_root: '.' # Racine du projet Drupal
+  file_source_path: '/private/typo3_files' # Chemin vers la copie locale de fileadmin
