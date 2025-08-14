@@ -8,6 +8,7 @@ dependencies:
     - field.storage.node.field_magazine
     - field.storage.node.field_url
     - node.type.publication
+    - user.role.authenticated
   module:
     - file
     - image
@@ -427,9 +428,10 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access content'
+          role:
+            authenticated: authenticated
       cache:
         type: tag
         options: {  }
@@ -578,7 +580,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_categorie_publication'
         - 'config:field.storage.node.field_image'
@@ -618,7 +620,7 @@ display:
         - request_format
         - url
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_categorie_publication'
         - 'config:field.storage.node.field_image'

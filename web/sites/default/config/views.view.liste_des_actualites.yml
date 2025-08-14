@@ -9,6 +9,7 @@ dependencies:
     - field.storage.node.field_tag
     - field.storage.node.field_url
     - node.type.actualite
+    - user.role.authenticated
   module:
     - entity_reference_revisions
     - image
@@ -17,6 +18,7 @@ dependencies:
     - rest_views
     - serialization
     - text
+    - user
 id: liste_des_actualites
 label: 'liste des actualités'
 module: views
@@ -584,8 +586,10 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: none
-        options: {  }
+        type: role
+        options:
+          role:
+            authenticated: authenticated
       cache:
         type: tag
         options: {  }
@@ -731,6 +735,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
+        - user.roles
       tags:
         - 'config:field.storage.node.field_entete'
         - 'config:field.storage.node.field_image'
@@ -775,6 +780,7 @@ display:
         - request_format
         - url
         - 'user.node_grants:view'
+        - user.roles
       tags:
         - 'config:field.storage.node.field_entete'
         - 'config:field.storage.node.field_image'
