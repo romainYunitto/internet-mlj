@@ -27,7 +27,9 @@ module:
   history: 0
   image: 0
   jsonapi: 0
+  jsonapi_hypermedia: 0
   jsonapi_menu_items: 0
+  jsonapi_menu_items_hypermedia: 0
   jsonapi_resources: 0
   language: 0
   link: 0
