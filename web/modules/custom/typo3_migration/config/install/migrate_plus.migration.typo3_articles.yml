@@ -1,35 +1,34 @@
 id: typo3_articles
-label: '3 - Migration des articles (via vue SQL)'
+label: '3 - Migration des articles'
 source:
   plugin: table
-  table: drupal_migration_articles # Pointe vers votre nouvelle vue
-  key: migrate
-  ids:
+  key: typo3
+  table_name: migration_typo3_articles
+  id_fields:
     uid:
       type: integer
-  columns:
-    - uid: uid
-    - title: title
-    - bodytext: bodytext
-    - teaser: teaser
-    - slug: slug
-    - file_uid: file_uid
 process:
-  type: { plugin: default_value, default_value: article }
+  type: { plugin: default_value, default_value: article } # Machine name du type de contenu "Article"
   title: title
   status: { plugin: default_value, default_value: 1 }
   'body/value': { plugin: html_clean, source: bodytext }
   'body/summary': teaser
   'body/format': { plugin: default_value, default_value: full_html }
-  path/alias: slug
+  path/alias:
+    plugin: concat
+    source:
+      - constants/path_prefix
+      - slug
+  path/pathauto:
+    plugin: default_value
+    default_value: 0
   path/pathauto: { plugin: default_value, default_value: 0 }
   'field_image/target_id':
     plugin: migration_lookup
-    migration: typo3_files
+    migration: typo3_files # Dépendance sur la migration des fichiers
     source: file_uid
   'field_image/alt': title
 destination:
   plugin: 'entity:node'
 migration_dependencies:
-  required:
-    - typo3_files
+  required: [typo3_files]

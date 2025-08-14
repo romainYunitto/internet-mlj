@@ -1,37 +1,34 @@
 id: typo3_pages
-label: '2 - Migration des pages (contenu agrégé via une vue)'
+label: '2 - Migration des pages (contenu agrégé)'
 source:
-  # Utilise le plugin 'table' pointant vers la vue SQL que vous avez créée
   plugin: table
-  table: drupal_migration_pages
-  key: migrate
-  ids:
+  key: typo3
+  table_name: migration_typo3_pages
+  id_fields:
     uid:
       type: integer
-  columns:
-    - uid: uid
-    - title: title
-    - hidden: hidden
-    - slug: slug
-    - full_body: full_body
 process:
-  type:
-    plugin: default_value
-    default_value: page # Machine name du type de contenu "Page"
+  type: { plugin: default_value, default_value: page }
   title: title
   status:
-    plugin: expression
-    expression: 'row.hidden == 0 ? 1 : 0'
+    plugin: static_map
+    source: hidden
+    map:
+      0: 1  # Non caché = publié
+      1: 0  # Caché = non publié
+    default_value: 1
   'body/value':
-    plugin: html_clean # Utilise votre plugin de nettoyage personnalisé
+    plugin: html_clean
     source: full_body
-  'body/format':
-    plugin: default_value
-    default_value: full_html
-  path/alias: slug # Crée l'alias d'URL à partir du champ 'slug'
-  path/pathauto:
-    plugin: default_value
-    default_value: 0 # Désactive Pathauto pour cet élément
+  'body/format': { plugin: default_value, default_value: full_html }
+  path/alias: slug
+  path/pathauto: { plugin: default_value, default_value: 0 }
+  'field_image/target_id':
+    plugin: migration_lookup
+    migration: typo3_files
+    source: file_uid
+  'field_image/alt': title
 destination:
   plugin: 'entity:node'
-migration_dependencies: {} # Aucune dépendance de fichier pour simplifier
+migration_dependencies:
+  required: [typo3_files]
