@@ -50,6 +50,7 @@ module:
   rest_export_nested: 0
   rest_views: 0
   rest_views_search_api: 0
+  restui: 0
   search: 0
   search_api: 0
   serialization: 0

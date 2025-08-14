@@ -603,7 +603,8 @@ display:
               raw_output: false
       display_extenders: {  }
       path: jsonapi/accueil
-      auth: {  }
+      auth:
+        - oauth2
     cache_metadata:
       max-age: -1
       contexts:
