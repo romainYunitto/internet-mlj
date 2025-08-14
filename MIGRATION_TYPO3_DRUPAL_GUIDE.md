@@ -5,11 +5,12 @@
 Cette documentation présente la migration complète d'un site TYPO3 vers Drupal 11, réalisée avec succès le 14 août 2025.
 
 ### Résultats de la migration :
-- ✅ **10,591 fichiers** migrés (99.95% de réussite)
+- ✅ **10,596 fichiers** migrés (100% de réussite) avec copie physique
 - ✅ **666 pages** migrées (100% de réussite)  
 - ✅ **4,472 articles** migrés (99.62% de réussite)
-- ✅ **Total : 15,729/15,751 éléments** (99.86% de succès)
+- ✅ **Total : 15,734/15,751 éléments** (99.89% de succès)
 - ✅ **Dates de publication originales TYPO3 préservées**
+- ✅ **Fichiers physiques copiés vers Drupal**
 
 ---
 
@@ -93,6 +94,20 @@ drush en migrate migrate_plus migrate_tools -y
 # Importer la base TYPO3 dans le conteneur MariaDB
 docker cp manteslajolie.sql mariadb:/tmp/
 docker exec mariadb mariadb -u root -ppassword orimante < /tmp/manteslajolie.sql
+```
+
+### 4. Préparation des fichiers TYPO3
+
+```bash
+# Créer le dossier tmp à la racine du projet
+mkdir -p tmp/files/data
+
+# Extraire l'archive des fichiers TYPO3 (fournie par l'hébergeur)
+# Remplacer 'fichiers_typo3.tar.gz' par le nom réel de l'archive
+tar -xzf fichiers_typo3.tar.gz -C tmp/files/data/
+
+# Vérifier que les fichiers sont bien extraits
+ls -la tmp/files/data/fileadmin/
 ```
 
 ---
@@ -203,13 +218,30 @@ source:
     uid:
       type: integer
 process:
-  # Pour le test, on crée juste l'entité sans copier le fichier physique
+  # Migration physique des fichiers depuis le dossier tmp/files/data/fileadmin/
   uri:
-    plugin: default_value
-    default_value: 'public://migrated/placeholder.txt'
+    plugin: file_copy
+    source:
+      - identifier
+    file_exists: 'rename'
+    move: false
+    reuse: true
+    destination_path_property: 'filepath'
+  filepath:
+    plugin: concat
+    source:
+      - constants/typo3_files_base
+      - identifier
   filename: name
+  filesize: size
+  filemime: mime_type
+  status:
+    plugin: default_value
+    default_value: 1
 destination:
   plugin: 'entity:file'
+constants:
+  typo3_files_base: '/var/www/html/tmp/files/data/fileadmin/'  # Chemin vers les fichiers TYPO3 extraits
 ```
 
 ### Migration des Pages (migrate_plus.migration.typo3_pages.yml)
@@ -661,12 +693,13 @@ L'hébergeur TYPO3 va fournir une archive complète des fichiers.
 # - Ou une archive complète : typo3_files_complete.tar.gz
 
 # === ÉTAPE 2 : Préparation des dossiers ===
-mkdir -p /home/moebius/drupal/internet-mlj/web/sites/default/files/typo3_files
-mkdir -p /home/moebius/drupal/internet-mlj/web/sites/default/files/migrated
-mkdir -p /home/moebius/drupal/internet-mlj/archives_typo3
+# Remplacer /path/to/drupal/project par le chemin de votre projet
+mkdir -p /path/to/drupal/project/web/sites/default/files/typo3_files
+mkdir -p /path/to/drupal/project/web/sites/default/files/migrated
+mkdir -p /path/to/drupal/project/archives_typo3
 
 # === ÉTAPE 3 : Extraction de l'archive ===
-cd /home/moebius/drupal/internet-mlj/
+cd /path/to/drupal/project/
 
 # Si archive unique
 tar -xzf archives_typo3/typo3_files_complete.tar.gz -C ./web/sites/default/files/typo3_files/
@@ -737,7 +770,7 @@ process:
     default_value: 1
 
 constants:
-  typo3_files_base: '/var/www/html/web/sites/default/files/typo3_files/'
+  typo3_files_base: '/var/www/html/web/sites/default/files/typo3_files/'  # Chemin dans le conteneur Docker
 
 destination:
   plugin: 'entity:file'
@@ -752,10 +785,13 @@ destination:
 echo "=== Préparation migration fichiers TYPO3 depuis archive ==="
 
 # === Variables de configuration ===
-PROJECT_ROOT="/home/moebius/drupal/internet-mlj"
+# À adapter selon votre environnement - Lancer depuis la racine du projet Drupal
+PROJECT_ROOT="$(pwd)"  # Dossier racine du projet Drupal (où se trouve docker-compose.yml)
 ARCHIVE_DIR="$PROJECT_ROOT/archives_typo3"
 TYPO3_FILES_DIR="$PROJECT_ROOT/web/sites/default/files/typo3_files"
 MIGRATED_DIR="$PROJECT_ROOT/web/sites/default/files/migrated"
+
+echo "📂 Projet Drupal détecté : $PROJECT_ROOT"
 
 # === Vérification des archives ===
 echo "Vérification des archives fournies par l'hébergeur..."
@@ -846,10 +882,23 @@ echo "✅ Checksum sauvegardé : typo3_files_checksum.md5"
 echo ""
 echo "🎉 Préparation terminée avec succès !"
 echo "📋 Prochaines étapes :"
-echo "   1. Modifier la configuration migration (constants/typo3_files_base)"
+echo "   1. Modifier la configuration migration si nécessaire"
 echo "   2. Tester la migration des fichiers : drush migrate:import typo3_files"
-echo "   3. Vérifier les fichiers copiés dans : $MIGRATED_DIR"
+echo "   3. Vérifier les fichiers copiés dans : \$MIGRATED_DIR"
+echo "   4. Configurer les redirections pour /fileadmin/*"
 echo ""
+
+# === Instructions d'utilisation ===
+cat << 'USAGE'
+📖 UTILISATION DE CE SCRIPT :
+
+1. Placer les archives TYPO3 dans : ./archives_typo3/
+2. Se positionner à la racine du projet Drupal
+3. Exécuter : chmod +x prepare_typo3_files_from_archive.sh
+4. Lancer : ./prepare_typo3_files_from_archive.sh
+5. Vérifier les logs et corriger si nécessaire
+
+USAGE
 ```
 
 #### 📊 Rapport de Migration des Fichiers
@@ -864,6 +913,26 @@ SELECT
 FROM file_managed 
 WHERE uri LIKE 'public://migrated%';
 "
+```
+
+#### 📂 Structure de Projet Générique
+
+**Variables à adapter selon votre environnement :**
+```bash
+# Exemple pour un projet standard
+PROJECT_ROOT="/var/www/drupal"        # Chemin absolu du projet
+# ou utiliser le chemin relatif
+PROJECT_ROOT="$(pwd)"                 # Dossier courant (si lancé depuis la racine)
+```
+
+**Structure attendue :**
+```
+votre-projet-drupal/
+├── docker-compose.yml
+├── web/
+│   └── sites/default/files/
+├── archives_typo3/              # Archives fournies par l'hébergeur
+└── prepare_typo3_files.sh       # Script de préparation
 ```
 
 #### 📋 Checklist Archive Hébergeur

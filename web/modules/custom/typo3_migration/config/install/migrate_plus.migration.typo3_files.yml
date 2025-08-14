@@ -8,12 +8,27 @@ source:
     uid:
       type: integer
 process:
-  # Pour le test, on crée juste l'entité sans copier le fichier physique
+  # Migration physique des fichiers depuis le dossier tmp/files/data/fileadmin/
   uri:
-    plugin: default_value
-    default_value: 'public://migrated/placeholder.txt'
+    plugin: file_copy
+    source:
+      - identifier
+    file_exists: 'rename'
+    move: false
+    reuse: true
+    destination_path_property: 'filepath'
+  filepath:
+    plugin: concat
+    source:
+      - constants/typo3_files_base
+      - identifier
   filename: name
+  filesize: size
+  filemime: mime_type
+  status:
+    plugin: default_value
+    default_value: 1
 destination:
   plugin: 'entity:file'
 constants:
-  file_source_path: '/private/typo3_files' # Chemin vers la copie locale de fileadmin
+  typo3_files_base: '/var/www/html/tmp/files/data/fileadmin/'  # Chemin vers les fichiers TYPO3 extraits
