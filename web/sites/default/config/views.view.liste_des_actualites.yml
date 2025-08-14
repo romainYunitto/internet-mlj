@@ -765,6 +765,8 @@ display:
         row: false
       display_extenders: {  }
       path: jsonapi/actualites
+      auth:
+        - oauth2
     cache_metadata:
       max-age: -1
       contexts:

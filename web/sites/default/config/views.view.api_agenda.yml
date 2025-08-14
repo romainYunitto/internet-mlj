@@ -979,6 +979,8 @@ display:
               raw_output: false
       display_extenders: {  }
       path: jsonapi/agenda
+      auth:
+        - oauth2
     cache_metadata:
       max-age: -1
       contexts:
