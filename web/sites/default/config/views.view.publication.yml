@@ -8,6 +8,7 @@ dependencies:
     - field.storage.node.field_magazine
     - field.storage.node.field_url
     - node.type.publication
+    - taxonomy.vocabulary.tag_publication
     - user.role.authenticated
   module:
     - file
@@ -16,6 +17,7 @@ dependencies:
     - rest
     - rest_views
     - serialization
+    - taxonomy
     - user
 id: publication
 label: publication
@@ -550,6 +552,51 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        field_categorie_publication_target_id:
+          id: field_categorie_publication_target_id
+          table: node__field_categorie_publication
+          field: field_categorie_publication_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_categorie_publication_target_id_op
+            label: 'categorie (field_categorie_publication)'
+            description: ''
+            use_operator: false
+            operator: field_categorie_publication_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_categorie_publication_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: tag_publication
+          type: textfield
+          hierarchy: false
+          limit: true
+          error_message: true
       style:
         type: serializer
       row:
@@ -612,6 +659,8 @@ display:
               raw_output: false
       display_extenders: {  }
       path: jsonapi/publications
+      auth:
+        - oauth2
     cache_metadata:
       max-age: -1
       contexts:

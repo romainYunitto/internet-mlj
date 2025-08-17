@@ -9,6 +9,7 @@ dependencies:
     - field.storage.node.field_tag
     - field.storage.node.field_url
     - node.type.actualite
+    - taxonomy.vocabulary.tag_actualite
     - user.role.authenticated
   module:
     - entity_reference_revisions
@@ -17,6 +18,7 @@ dependencies:
     - rest
     - rest_views
     - serialization
+    - taxonomy
     - text
     - user
 id: liste_des_actualites
@@ -281,11 +283,11 @@ display:
           click_sort_column: value
           type: timestamp
           settings:
-            date_format: medium
+            date_format: olivero_medium
             custom_date_format: ''
-            timezone: ''
+            timezone: Europe/Paris
             tooltip:
-              date_format: long
+              date_format: custom
               custom_date_format: ''
             time_diff:
               enabled: false
@@ -711,6 +713,51 @@ display:
               1: {  }
               2: {  }
               3: {  }
+        field_tag_target_id:
+          id: field_tag_target_id
+          table: node__field_tag
+          field: field_tag_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_tag_target_id_op
+            label: 'tag (field_tag)'
+            description: ''
+            use_operator: false
+            operator: field_tag_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_tag_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: tag_actualite
+          type: textfield
+          hierarchy: false
+          limit: true
+          error_message: true
       style:
         type: table
       row:
