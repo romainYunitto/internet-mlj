@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.agenda.field_entete
     - field.field.node.agenda.field_image
     - field.field.node.agenda.field_informations_horaire
+    - field.field.node.agenda.field_lieu
     - field.field.node.agenda.field_url
     - image.style.medium
     - node.type.agenda
@@ -47,6 +48,7 @@ hidden:
   field_date_de_fin: true
   field_entete: true
   field_informations_horaire: true
+  field_lieu: true
   field_url: true
   langcode: true
   search_api_excerpt: true

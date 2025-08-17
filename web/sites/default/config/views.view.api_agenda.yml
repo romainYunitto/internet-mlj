@@ -11,8 +11,10 @@ dependencies:
     - field.storage.node.field_entete
     - field.storage.node.field_image
     - field.storage.node.field_informations_horaire
+    - field.storage.node.field_lieu
     - field.storage.node.field_url
     - node.type.agenda
+    - taxonomy.vocabulary.tag_agenda
     - user.role.authenticated
   module:
     - datetime
@@ -22,6 +24,7 @@ dependencies:
     - rest
     - rest_views
     - serialization
+    - taxonomy
     - text
     - user
 id: api_agenda
@@ -735,6 +738,69 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        field_lieu:
+          id: field_lieu
+          table: node__field_lieu
+          field: field_lieu
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: true
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
       pager:
         type: mini
         options:
@@ -887,6 +953,180 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        field_lieu_value:
+          id: field_lieu_value
+          table: node__field_lieu
+          field: field_lieu_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_lieu_value_op
+            label: 'lieu (field_lieu)'
+            description: ''
+            use_operator: false
+            operator: field_lieu_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_lieu_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_date_value:
+          id: field_date_value
+          table: node__field_date
+          field: field_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_date_value_op
+            label: 'date de debut (field_date)'
+            description: ''
+            use_operator: false
+            operator: field_date_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_date_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_date_de_fin_value:
+          id: field_date_de_fin_value
+          table: node__field_date_de_fin
+          field: field_date_de_fin_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_date_de_fin_value_op
+            label: 'date de fin (field_date_de_fin)'
+            description: ''
+            use_operator: false
+            operator: field_date_de_fin_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_date_de_fin_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_tag_target_id:
+          id: field_tag_target_id
+          table: node__field_tag
+          field: field_tag_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_tag_target_id_op
+            label: 'tag (field_tag)'
+            description: ''
+            use_operator: false
+            operator: field_tag_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_tag_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: tag_agenda
+          type: textfield
+          hierarchy: false
+          limit: true
+          error_message: true
       style:
         type: serializer
       row:
@@ -927,6 +1167,7 @@ display:
         - 'config:field.storage.node.field_entete'
         - 'config:field.storage.node.field_image'
         - 'config:field.storage.node.field_informations_horaire'
+        - 'config:field.storage.node.field_lieu'
         - 'config:field.storage.node.field_url'
   rest_export_1:
     id: rest_export_1
@@ -1001,4 +1242,5 @@ display:
         - 'config:field.storage.node.field_entete'
         - 'config:field.storage.node.field_image'
         - 'config:field.storage.node.field_informations_horaire'
+        - 'config:field.storage.node.field_lieu'
         - 'config:field.storage.node.field_url'

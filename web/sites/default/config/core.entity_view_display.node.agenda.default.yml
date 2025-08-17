@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.agenda.field_entete
     - field.field.node.agenda.field_image
     - field.field.node.agenda.field_informations_horaire
+    - field.field.node.agenda.field_lieu
     - field.field.node.agenda.field_url
     - image.style.wide
     - node.type.agenda
@@ -91,6 +92,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 103
+    region: content
+  field_lieu:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 113
     region: content
   field_url:
     type: string
