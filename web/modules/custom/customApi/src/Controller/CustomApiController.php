@@ -61,7 +61,7 @@ class CustomApiController extends ControllerBase
 
     $nodes = Node::loadMultiple($nids);
     $text_fields = self::getTextFields();
-    $results = [];
+    $results_by_type = [];
 
     foreach ($nodes as $node) {
       $found = false;
@@ -73,7 +73,7 @@ class CustomApiController extends ControllerBase
         $excerpts[] = [];
       }
 
-      // Recherche dans les champs texte (hors champs exclus)
+      // Recherche dans les champs texte
       foreach ($text_fields as $field_name) {
         if (in_array($field_name, $this->excludedFields)) {
           continue;
@@ -90,25 +90,30 @@ class CustomApiController extends ControllerBase
         }
       }
 
+      // Recherche dans les paragraphes
       $paragraph_excerpts = $this->searchInParagraphs($node, $search_term);
       if (!empty($paragraph_excerpts)) {
         $found = true;
         $excerpts = array_merge($excerpts, $paragraph_excerpts);
       }
 
+      // Ajout au groupe par type si trouvé
       if ($found) {
-        $results[] = [
+        $type = $node->getType();
+        if (!isset($results_by_type[$type])) {
+          $results_by_type[$type] = [];
+        }
+
+        $results_by_type[$type][] = [
           'nid' => $node->id(),
           'title' => $node->label(),
-          'type' => $node->getType(),
           'created' => date('Y-m-d H:i:s', $node->getCreatedTime()),
           'url' => $node->toUrl()->toString(),
           'excerpts' => $excerpts,
         ];
       }
     }
-
-    return new JsonResponse(['results' => $results]);
+    return new JsonResponse(['results' => $results_by_type]);
   }
 
   /**
