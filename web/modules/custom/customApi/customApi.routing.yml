@@ -1,0 +1,20 @@
+custom_api.message:
+  path: '/api/custom/message'
+  defaults:
+    _controller: '\Drupal\customApi\Controller\CustomApiController::message'
+  requirements:
+    _permission: 'access content'
+
+custom_api.search:
+  path: '/api/custom/search'
+  defaults:
+    _controller: '\Drupal\customApi\Controller\CustomApiController::search'
+  requirements:
+    _permission: 'access content'
+
+custom_api.lieux:
+  path: '/api/custom/lieux'
+  defaults:
+    _controller: '\Drupal\customApi\Controller\CustomApiController::getLieux'
+  requirements:
+    _permission: 'access content'
