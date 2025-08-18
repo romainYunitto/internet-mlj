@@ -2,6 +2,8 @@ uuid: 431aee3c-fe21-4059-ad18-0e49813b61b8
 langcode: fr
 status: true
 dependencies:
+  config:
+    - user.role.authenticated
   module:
     - rest
     - serialization
@@ -100,9 +102,10 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access content'
+          role:
+            authenticated: authenticated
       cache:
         type: tag
         options: {  }
@@ -191,7 +194,7 @@ display:
         - request_format
         - url
         - url.query_args
-        - user.permissions
+        - user.roles
       tags: {  }
   rest_export_1:
     id: rest_export_1
@@ -224,5 +227,5 @@ display:
         - 'languages:language_interface'
         - request_format
         - url
-        - user.permissions
+        - user.roles
       tags: {  }
