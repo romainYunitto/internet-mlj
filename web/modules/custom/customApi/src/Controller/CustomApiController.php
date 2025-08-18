@@ -14,17 +14,6 @@ class CustomApiController extends ControllerBase
   private array $excludedFields = ['field_url'];
 
   /**
-   * Retourne un message JSON.
-   */
-  public function message()
-  {
-    $data = [
-      'message' => 'Bonjour depuis Custom API !',
-    ];
-    return new JsonResponse($data);
-  }
-
-  /**
    * API de recherche avec extraits et filtres de date.
    */
   public function search(Request $request) {
