@@ -33,12 +33,13 @@
         "drupal/search_api": "^1.38",
         "drupal/simple_oauth": "^6.0",
         "drupal/views_serialization_pager": "^1.1",
+        "drupal/webform": "^6.3@beta",
         "drush/drush": "^13.6"
     },
     "conflict": {
         "drupal/drupal": "*"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
         "allow-plugins": {

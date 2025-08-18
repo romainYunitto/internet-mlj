@@ -2,6 +2,8 @@
 
 namespace Drupal\customApi\Controller;
 
+use Drupal\webform\Entity\Webform;
+use Drupal\webform\Entity\WebformSubmission;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Drupal\Core\Controller\ControllerBase;
@@ -13,10 +15,23 @@ class CustomApiController extends ControllerBase
 
   private array $excludedFields = ['field_url'];
 
+  public function message()
+  {
+    $webform_id = 'postuler';
+    $webform = Webform::load($webform_id);
+
+    if ($webform) {
+      $elements = $webform->getElementsDecoded();
+      dump($elements);
+    }
+    return new JsonResponse(['message' => 'Hello World!']);
+  }
+
   /**
    * API de recherche avec extraits et filtres de date.
    */
-  public function search(Request $request) {
+  public function search(Request $request)
+  {
     $search_term = $request->query->get('q');
     $from = $request->query->get('from');
     $to = $request->query->get('to');
@@ -108,7 +123,8 @@ class CustomApiController extends ControllerBase
   /**
    * Récupère tous les champs texte des nœuds, hors champs exclus.
    */
-  public static function getTextFields(): array {
+  public static function getTextFields(): array
+  {
     $fields = FieldStorageConfig::loadMultiple();
     $text_fields = [];
 
@@ -127,7 +143,8 @@ class CustomApiController extends ControllerBase
   /**
    * Recherche dans les paragraphes, en excluant les champs ignorés.
    */
-  private function searchInParagraphs($entity, string $search_term) {
+  private function searchInParagraphs($entity, string $search_term)
+  {
     $results = [];
 
     foreach ($entity->getFields() as $field) {
@@ -178,7 +195,8 @@ class CustomApiController extends ControllerBase
   /**
    * Génère un extrait contextuel autour du mot-clé.
    */
-  private function extractExcerpt(string $text, string $keyword, int $context = 30) {
+  private function extractExcerpt(string $text, string $keyword, int $context = 30)
+  {
     $pos = stripos($text, $keyword);
     if ($pos === false) {
       return '';
@@ -191,7 +209,8 @@ class CustomApiController extends ControllerBase
     return '...' . trim($excerpt) . '...';
   }
 
-  public function getLieux(): JsonResponse {
+  public function getLieux(): JsonResponse
+  {
     $query = \Drupal::entityQuery('node')
       ->accessCheck(TRUE)
       ->condition('status', 1)

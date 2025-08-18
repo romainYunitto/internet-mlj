@@ -1,0 +1,22 @@
+uuid: 68280a1b-215f-4b6f-9cad-0344272dfb02
+langcode: fr
+status: true
+dependencies:
+  module:
+    - serialization
+    - simple_oauth
+    - webform
+id: entity.webform_submission
+plugin_id: 'entity:webform_submission'
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - oauth2
+  POST:
+    supported_formats:
+      - json
+    supported_auth:
+      - oauth2
