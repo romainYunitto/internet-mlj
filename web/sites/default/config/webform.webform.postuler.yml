@@ -31,6 +31,15 @@ elements: |-
   message:
     '#type': textarea
     '#title': Message
+  cv:
+    '#type': url
+    '#title': cv
+  motivation:
+    '#type': url
+    '#title': motivation
+  autre:
+    '#type': url
+    '#title': autre
 css: ''
 javascript: ''
 settings:

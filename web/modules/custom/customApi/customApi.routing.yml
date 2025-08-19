@@ -1,7 +1,7 @@
 custom_api.message:
-  path: '/api/custom/message'
+  path: '/api/custom/submit'
   defaults:
-    _controller: '\Drupal\customApi\Controller\CustomApiController::message'
+    _controller: '\Drupal\customApi\Controller\CustomApiController::submit'
   requirements:
     _permission: 'access content'
 

@@ -51,6 +51,7 @@ web/libraries
 # Composer
 vendor/
 composer.lock
+/tmp
 
 # Environment
 .env
