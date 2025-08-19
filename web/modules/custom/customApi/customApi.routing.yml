@@ -1,20 +1,27 @@
-custom_api.message:
-  path: '/api/custom/submit'
+custom_api.submit:
+  path: '/jsonapi/custom/submit'
   defaults:
     _controller: '\Drupal\customApi\Controller\CustomApiController::submit'
   requirements:
     _permission: 'access content'
 
 custom_api.search:
-  path: '/api/custom/search'
+  path: '/jsonapi/custom/search'
   defaults:
     _controller: '\Drupal\customApi\Controller\CustomApiController::search'
   requirements:
-    _permission: 'access content'
+    _custom_access: 'custom_api.bearer_service_check::access'
 
 custom_api.lieux:
-  path: '/api/custom/lieux'
+  path: '/jsonapi/custom/lieux'
   defaults:
     _controller: '\Drupal\customApi\Controller\CustomApiController::getLieux'
   requirements:
-    _permission: 'access content'
+    _custom_access: 'custom_api.bearer_service_check::access'
+
+custom_api.periode:
+  path: '/jsonapi/custom/periode'
+  defaults:
+    _controller: '\Drupal\customApi\Controller\CustomApiController::getAgendaPeriode'
+  requirements:
+    _custom_access: 'custom_api.bearer_service_check::access'

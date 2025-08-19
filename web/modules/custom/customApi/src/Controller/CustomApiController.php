@@ -243,9 +243,9 @@ class CustomApiController extends ControllerBase
                 'image' => $this->getImageUrl($node, 'field_image'),
                 'created' => date('Y-m-d H:i:s', $node->getCreatedTime()),
                 'url' => $node->toUrl()->toString(),
-                'lieu' => $type=="agenda" ? $node->get('field_lieu')->value : '',
-                'debut' => $type=="agenda" ? $node->get('field_date')->value : '',
-                'fin' => $type=="agenda" ? $node->get('field_date_de_fin')->value : '',
+                'lieu' => $type == "agenda" ? $node->get('field_lieu')->value : '',
+                'debut' => $type == "agenda" ? $node->get('field_date')->value : '',
+                'fin' => $type == "agenda" ? $node->get('field_date_de_fin')->value : '',
                 'excerpts' => $excerpts,
             ];
         }
@@ -423,5 +423,18 @@ class CustomApiController extends ControllerBase
             }
         }
         return null;
+    }
+
+    public function getAgendaPeriode(): JsonResponse
+    {
+        $periodes = [
+            "weekend" => " Ce week-end",
+            "semaine" => " Cette semaine",
+            "mois" => " Ce mois ci",
+            "mois_prochain" => " Le mois prochain"
+        ];
+
+        return new JsonResponse(['results' => $periodes]);
+
     }
 }
