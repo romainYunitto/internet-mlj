@@ -260,6 +260,21 @@ class CustomApiController extends ControllerBase
                     $results_by_type[$node_type] = [];
                 }
 
+                $tag_field_map = [
+                    'actualite' => 'field_tag',
+                    'agenda' => 'field_categorie',
+                ];
+
+                $tags_list = [];
+                if (isset($tag_field_map[$node_type]) && $node->hasField($tag_field_map[$node_type])) {
+                    $tag_field = $node->get($tag_field_map[$node_type]);
+                    foreach ($tag_field as $item) {
+                        if ($item->entity) {
+                            $tags_list[] = $item->entity->label();
+                        }
+                    }
+                }
+
                 $results_by_type[$node_type][] = [
                     'nid' => $node->id(),
                     'title' => $node->label(),
@@ -269,6 +284,7 @@ class CustomApiController extends ControllerBase
                     'lieu' => $node_type === "agenda" ? $node->get('field_lieu')->value : '',
                     'debut' => $node_type === "agenda" ? $node->get('field_date')->value : '',
                     'fin' => $node_type === "agenda" ? $node->get('field_date_de_fin')->value : '',
+                    'field_tag_export' => $tags_list,
                     'excerpts' => $excerpts,
                 ];
             }
