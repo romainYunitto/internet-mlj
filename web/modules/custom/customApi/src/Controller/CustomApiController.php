@@ -116,8 +116,7 @@ class CustomApiController extends ControllerBase
     /**
      * API de recherche avec extraits et filtres de date.
      */
-    public
-    function search(Request $request)
+    public function search(Request $request)
     {
         $search_term = $request->query->get('q');
         $from = $request->query->get('from');
@@ -151,8 +150,6 @@ class CustomApiController extends ControllerBase
         }
 
         if (!empty($lieu)) {
-            // Suppose que field_lieu est un champ texte simple
-            // Pour une recherche "contient" (LIKE), il faut utiliser condition 'CONTAINS'
             $query->condition('field_lieu', $lieu, '=');
         }
 
@@ -167,7 +164,6 @@ class CustomApiController extends ControllerBase
 
         if ($type === 'agenda') {
             if ($from && $to) {
-                // Le contenu doit chevaucher la période
                 $query->condition('field_date.value', $to, '<=');
                 $query->condition('field_date_de_fin.value', $from, '>=');
             }
@@ -194,8 +190,6 @@ class CustomApiController extends ControllerBase
             $excerpts = [];
 
             if ($search_term) {
-                // Recherche par texte
-
                 $found = false;
 
                 if (stripos($node->label(), $search_term) !== false) {
@@ -226,32 +220,63 @@ class CustomApiController extends ControllerBase
                 }
 
                 if (!$found) {
-                    // Ne pas inclure ce node, le terme n’a pas été trouvé
                     continue;
                 }
             }
 
-            // Si on arrive ici, soit on a fait la recherche et trouvé, soit pas de recherche texte (q absent)
             $node_type = $node->getType();
-            if (!isset($results_by_type[$node_type])) {
-                $results_by_type[$node_type] = [];
-            }
 
-            $results_by_type[$node_type][] = [
-                'nid' => $node->id(),
-                'title' => $node->label(),
-                'image' => $this->getImageUrl($node, 'field_image'),
-                'created' => date('Y-m-d H:i:s', $node->getCreatedTime()),
-                'url' => $node->toUrl()->toString(),
-                'lieu' => $type == "agenda" ? $node->get('field_lieu')->value : '',
-                'debut' => $type == "agenda" ? $node->get('field_date')->value : '',
-                'fin' => $type == "agenda" ? $node->get('field_date_de_fin')->value : '',
-                'excerpts' => $excerpts,
-            ];
+            if ($node_type === 'vie') {
+                // Grouper par menu parent
+                $menu_parent_label = 'Sans menu';
+                if ($node->hasField('field_menu_parent') && !$node->get('field_menu_parent')->isEmpty()) {
+                    $menu_link = $node->get('field_menu_parent')->entity;
+                    if ($menu_link) {
+                        $menu_parent_label = $menu_link->label();
+                    }
+                }
+
+                if (!isset($results_by_type['vie'])) {
+                    $results_by_type['vie'] = [];
+                }
+                if (!isset($results_by_type['vie'][$menu_parent_label])) {
+                    $results_by_type['vie'][$menu_parent_label] = [];
+                }
+
+                $results_by_type['vie'][$menu_parent_label][] = [
+                    'nid' => $node->id(),
+                    'title' => $node->label(),
+                    'image' => $this->getImageUrl($node, 'field_image'),
+                    'created' => date('Y-m-d H:i:s', $node->getCreatedTime()),
+                    'url' => $node->toUrl()->toString(),
+                    'lieu' => '',
+                    'debut' => '',
+                    'fin' => '',
+                    'excerpts' => $excerpts,
+                ];
+            } else {
+                // Structure classique
+                if (!isset($results_by_type[$node_type])) {
+                    $results_by_type[$node_type] = [];
+                }
+
+                $results_by_type[$node_type][] = [
+                    'nid' => $node->id(),
+                    'title' => $node->label(),
+                    'image' => $this->getImageUrl($node, 'field_image'),
+                    'created' => date('Y-m-d H:i:s', $node->getCreatedTime()),
+                    'url' => $node->toUrl()->toString(),
+                    'lieu' => $node_type === "agenda" ? $node->get('field_lieu')->value : '',
+                    'debut' => $node_type === "agenda" ? $node->get('field_date')->value : '',
+                    'fin' => $node_type === "agenda" ? $node->get('field_date_de_fin')->value : '',
+                    'excerpts' => $excerpts,
+                ];
+            }
         }
 
         return new JsonResponse(['results' => $results_by_type]);
     }
+
 
     /**
      * Récupère tous les champs texte des nœuds, hors champs exclus.
