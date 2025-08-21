@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.agenda.field_accordeon
     - field.field.node.agenda.field_adresse
+    - field.field.node.agenda.field_carousel
     - field.field.node.agenda.field_categorie
     - field.field.node.agenda.field_date
     - field.field.node.agenda.field_date_de_fin
@@ -57,6 +58,14 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_carousel:
+    type: image_image
+    weight: 128
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
   field_categorie:
     type: entity_reference_autocomplete

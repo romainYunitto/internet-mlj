@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.agenda.field_accordeon
     - field.field.node.agenda.field_adresse
+    - field.field.node.agenda.field_carousel
     - field.field.node.agenda.field_categorie
     - field.field.node.agenda.field_date
     - field.field.node.agenda.field_date_de_fin
@@ -41,6 +42,17 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 105
+    region: content
+  field_carousel:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 114
     region: content
   field_categorie:
     type: entity_reference_label

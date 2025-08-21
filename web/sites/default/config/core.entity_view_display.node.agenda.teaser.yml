@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.agenda.field_accordeon
     - field.field.node.agenda.field_adresse
+    - field.field.node.agenda.field_carousel
     - field.field.node.agenda.field_categorie
     - field.field.node.agenda.field_date
     - field.field.node.agenda.field_date_de_fin
@@ -43,6 +44,7 @@ content:
 hidden:
   field_accordeon: true
   field_adresse: true
+  field_carousel: true
   field_categorie: true
   field_date: true
   field_date_de_fin: true
