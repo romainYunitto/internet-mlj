@@ -879,12 +879,3 @@ $settings['trusted_host_patterns'] = array(
 $config['jsonapi_extras.jsonapi_resource_config.menu_link_content--menu_link_content']['disabled'] = FALSE;
 $config['system.logging']['error_level'] = "all";
 $settings['hash_salt'] = '33ccd2cefaf8d0f4ad7019a7cf76c0a3595f568e3af5b179ee47e2cacadc7c27';
-$settings['cookie_secure'] = FALSE;
-
-$settings['reverse_proxy'] = TRUE;
-$settings['reverse_proxy_addresses'] = ['127.0.0.1'];
-
-$settings['trusted_host_patterns'] = [
-  '^localhost$',
-  '^localhost:8000$',
-];
