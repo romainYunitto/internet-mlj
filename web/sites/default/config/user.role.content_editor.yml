@@ -15,6 +15,7 @@ dependencies:
     - system
     - taxonomy
     - toolbar
+    - webform
 _core:
   default_config_hash: e_wG1u7SrGaJbY2-Szgbgl-c8T3kdirU3uTNq2c_QJQ
 id: content_editor
@@ -23,25 +24,48 @@ weight: 2
 is_admin: false
 permissions:
   - 'access administration pages'
+  - 'access any webform configuration'
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
+  - 'access own webform configuration'
   - 'access toolbar'
+  - 'access webform help'
+  - 'access webform overview'
+  - 'access webform submission user'
   - 'administer url aliases'
+  - 'administer webform'
+  - 'administer webform element access'
+  - 'administer webform submission'
   - 'create article content'
   - 'create page content'
   - 'create terms in tags'
   - 'create url aliases'
+  - 'create webform'
+  - 'delete any webform'
+  - 'delete any webform submission'
   - 'delete article revisions'
   - 'delete own article content'
   - 'delete own files'
   - 'delete own page content'
+  - 'delete own webform'
+  - 'delete own webform submission'
   - 'delete page revisions'
+  - 'edit any webform'
+  - 'edit any webform submission'
   - 'edit own article content'
   - 'edit own comments'
   - 'edit own page content'
+  - 'edit own webform'
+  - 'edit own webform submission'
   - 'edit terms in tags'
+  - 'edit webform assets'
+  - 'edit webform source'
+  - 'edit webform twig'
+  - 'edit webform variants'
   - 'revert all revisions'
   - 'view all revisions'
+  - 'view any webform submission'
   - 'view own unpublished content'
+  - 'view own webform submission'
   - 'view the administration theme'

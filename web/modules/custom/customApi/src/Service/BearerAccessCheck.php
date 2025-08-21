@@ -23,10 +23,18 @@ class BearerAccessCheck implements AccessInterface
   {
     $request = $this->requestStack->getCurrentRequest();
     $authHeader = $request->headers->get('Authorization');
+    $path = $request->getPathInfo();
+    $protectedPaths = [
+      '/jsonapi/custom/search',
+      '/jsonapi/custom/lieux',
+      '/jsonapi/custom/periode',
+    ];
+    if (!in_array($path, $protectedPaths)) {
+      return AccessResult::allowed();
+    }
     if ($authHeader && preg_match('/Bearer\s+(\S+)/i', $authHeader, $matches)) {
       return AccessResult::allowed();
     }
-
     return AccessResult::forbidden('Token invalide ou absent.');
   }
 }
