@@ -6,16 +6,20 @@ dependencies:
     - field.field.node.vie.field_accordeon
     - field.field.node.vie.field_card
     - field.field.node.vie.field_classique
+    - field.field.node.vie.field_conseil
     - field.field.node.vie.field_image
     - field.field.node.vie.field_menu_parent
     - field.field.node.vie.field_sous_titre
     - field.field.node.vie.field_url
+    - field.field.node.vie.field_video
     - image.style.wide
     - node.type.vie
   module:
     - entity_reference_revisions
     - image
+    - link
     - paragraphs
+    - text
     - user
 id: node.vie.default
 targetEntityType: node
@@ -46,6 +50,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 112
+    region: content
+  field_conseil:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 115
     region: content
   field_image:
     type: image
@@ -81,6 +92,18 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 105
+    region: content
+  field_video:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 106
     region: content
   links:
     settings: {  }

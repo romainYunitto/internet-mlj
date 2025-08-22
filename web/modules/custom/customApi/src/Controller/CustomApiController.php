@@ -105,12 +105,6 @@ class CustomApiController extends ControllerBase
       'message' => 'Soumission enregistrée',
       'sid' => $submission->id(),
     ]);
-    /*
-    if ($webform) {
-        $elements = $webform->getElementsDecoded();
-        dump($elements);
-    }
-    return new JsonResponse(['message' => 'Hello World!']);*/
   }
 
   /**
@@ -127,11 +121,16 @@ class CustomApiController extends ControllerBase
     $lieu = $request->query->get('lieu');
     $tags = [];
 
+
     if (!empty($tag_param)) {
       $tags = array_filter(array_map('trim', explode(',', $tag_param)));
     }
     if (!$search_term && !$type) {
       return new JsonResponse(['error' => 'Paramètre "q" ou "type" requis.'], 400);
+    }
+
+    if (!is_null($search_term) && strlen($search_term) < 3) {
+      return new JsonResponse(['error' => 'Vous devez saisir au moins 3 caratères'], 400);
     }
 
     if ($period && $type === 'agenda') {
@@ -202,14 +201,19 @@ class CustomApiController extends ControllerBase
           if (in_array($field_name, $this->excludedFields)) {
             continue;
           }
-
           if ($node->hasField($field_name) && !$node->get($field_name)->isEmpty()) {
-            $value = $node->get($field_name)->value ?? '';
-            if (stripos($value, $search_term) !== false) {
-              $found = true;
-              $excerpts[] = [
-                'excerpt' => $this->extractExcerpt($value, $search_term),
-              ];
+            $field = $node->get($field_name);
+            if (!$field->isEmpty() && is_string($field->value ?? null)) {
+              $value = $field->value;
+              if (stripos($value, $search_term) !== false) {
+                $res = mb_convert_encoding($this->extractExcerpt($value, $search_term), 'UTF-8', 'auto');
+                if (!str_contains($res, 'field_')) {
+                  $found = true;
+                  $excerpts[] = [
+                    'excerpt' => $res,
+                  ];
+                }
+              }
             }
           }
         }
@@ -292,7 +296,6 @@ class CustomApiController extends ControllerBase
         ];
       }
     }
-
     return new JsonResponse(['results' => $results_by_type]);
   }
 
@@ -339,34 +342,43 @@ class CustomApiController extends ControllerBase
             if (in_array($field_name, $this->excludedFields)) {
               continue;
             }
-
-            // Champs texte
-            if (in_array($field_type, ['string', 'text', 'text_long', 'text_with_summary'])) {
-              $val = isset($pfield->value) ? $pfield->value : '';
-              if (stripos($val, $search_term) !== false) {
-                $results[] = [
-                  'excerpt' => $this->extractExcerpt($val, $search_term),
-                ];
-              }
-            }
-
-            // Sous-paragraphes
-            if (
-              $field_type === 'entity_reference_revisions' &&
-              $pfield->getFieldDefinition()->getSetting('target_type') === 'paragraph'
-            ) {
-              foreach ($pfield->referencedEntities() as $sub_paragraph) {
-                $sub_results = $this->searchInParagraphs($sub_paragraph, $search_term);
-                if (!empty($sub_results)) {
-                  $results = array_merge($results, $sub_results);
+            // On ignore les champs entity_reference_revisions ici (mais on les traite en sous-paragraphes après)
+            if ($field_type === 'entity_reference_revisions') {
+              // Sous-paragraphes : traiter récursivement
+              if ($pfield->getFieldDefinition()->getSetting('target_type') === 'paragraph') {
+                foreach ($pfield->referencedEntities() as $sub_paragraph) {
+                  $sub_results = $this->searchInParagraphs($sub_paragraph, $search_term);
+                  if (!empty($sub_results)) {
+                    $results = array_merge($results, $sub_results);
+                  }
                 }
               }
+
+              continue;
+            }
+            if (in_array($field_type, ['string', 'text', 'text_long', 'text_with_summary']) && !$pfield->isEmpty()) {
+              if (
+                in_array($field_type, ['string', 'text', 'text_long', 'text_with_summary']) &&
+                !$pfield->isEmpty()
+              ) {
+                // Sécurise l’accès à la valeur
+                $val = $pfield->getValue()[0]['value'] ?? null;
+                if (is_string($val) && stripos($val, $search_term) !== false) {
+                  $res = mb_convert_encoding($this->extractExcerpt($val, $search_term), 'UTF-8', 'auto');
+                  if (!str_contains($res, 'field_')) {
+                    $results[] = [
+                      'excerpt' => $res,
+                    ];
+                  }
+
+                }
+              }
+
             }
           }
         }
       }
     }
-
     return $results;
   }
 

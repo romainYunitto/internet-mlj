@@ -6,16 +6,20 @@ dependencies:
     - field.field.node.vie.field_accordeon
     - field.field.node.vie.field_card
     - field.field.node.vie.field_classique
+    - field.field.node.vie.field_conseil
     - field.field.node.vie.field_image
     - field.field.node.vie.field_menu_parent
     - field.field.node.vie.field_sous_titre
     - field.field.node.vie.field_url
+    - field.field.node.vie.field_video
     - image.style.thumbnail
     - node.type.vie
   module:
     - image
+    - link
     - paragraphs
     - path
+    - text
 id: node.vie.default
 targetEntityType: node
 bundle: vie
@@ -81,6 +85,14 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
+  field_conseil:
+    type: text_textarea
+    weight: 127
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
   field_image:
     type: image_image
     weight: 1
@@ -114,6 +126,14 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_video:
+    type: link_default
+    weight: 126
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   langcode:
     type: language_select

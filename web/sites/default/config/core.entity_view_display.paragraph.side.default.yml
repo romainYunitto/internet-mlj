@@ -5,7 +5,9 @@ dependencies:
   config:
     - field.field.paragraph.side.field_adresse
     - field.field.paragraph.side.field_email
+    - field.field.paragraph.side.field_horaire
     - field.field.paragraph.side.field_image
+    - field.field.paragraph.side.field_liste_actualites
     - field.field.paragraph.side.field_redirection
     - field.field.paragraph.side.field_telechargement
     - field.field.paragraph.side.field_telephone
@@ -35,6 +37,14 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_horaire:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
   field_image:
     type: image
     label: above
@@ -45,6 +55,14 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_liste_actualites:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 7
     region: content
   field_redirection:
     type: link

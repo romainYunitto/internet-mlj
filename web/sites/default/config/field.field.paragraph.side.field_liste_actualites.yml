@@ -1,0 +1,29 @@
+uuid: 9c59abf1-68c3-4129-adad-92efdb88b04c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_liste_actualites
+    - node.type.actualite
+    - paragraphs.paragraphs_type.side
+id: paragraph.side.field_liste_actualites
+field_name: field_liste_actualites
+entity_type: paragraph
+bundle: side
+label: 'liste actualités'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      actualite: actualite
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
