@@ -1,0 +1,33 @@
+uuid: 50b8fb41-6fd6-49c0-bea6-64dea118e12a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.message_important
+    - field.field.block_content.message_important.body
+    - field.field.block_content.message_important.field_type_de_message
+  module:
+    - options
+    - text
+id: block_content.message_important.default
+targetEntityType: block_content
+bundle: message_important
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_type_de_message:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

@@ -1,0 +1,8 @@
+uuid: 5a561950-10ce-4469-aac1-9a1a96d3d016
+langcode: fr
+status: true
+dependencies: {  }
+id: message_important
+label: 'Message important'
+revision: false
+description: null
