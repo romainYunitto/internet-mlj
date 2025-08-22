@@ -6,11 +6,13 @@ dependencies:
     - field.field.node.accueil.field_actualite
     - field.field.node.accueil.field_agendaa
     - field.field.node.accueil.field_amenagement
+    - field.field.node.accueil.field_carousel
     - field.field.node.accueil.field_decouvrir
     - field.field.node.accueil.field_publication
     - field.field.node.accueil.field_video
     - node.type.accueil
   module:
+    - image
     - link
     - user
 id: node.accueil.default
@@ -41,6 +43,17 @@ content:
       link: true
     third_party_settings: {  }
     weight: 105
+    region: content
+  field_carousel:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 114
     region: content
   field_decouvrir:
     type: entity_reference_label

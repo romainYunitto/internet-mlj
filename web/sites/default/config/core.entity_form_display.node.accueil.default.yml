@@ -6,11 +6,14 @@ dependencies:
     - field.field.node.accueil.field_actualite
     - field.field.node.accueil.field_agendaa
     - field.field.node.accueil.field_amenagement
+    - field.field.node.accueil.field_carousel
     - field.field.node.accueil.field_decouvrir
     - field.field.node.accueil.field_publication
     - field.field.node.accueil.field_video
+    - image.style.thumbnail
     - node.type.accueil
   module:
+    - image
     - link
     - path
 id: node.accueil.default
@@ -53,6 +56,14 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_carousel:
+    type: image_image
+    weight: 128
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
   field_decouvrir:
     type: entity_reference_autocomplete

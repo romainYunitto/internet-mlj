@@ -3,6 +3,7 @@ langcode: fr
 status: true
 dependencies:
   config:
+    - field.field.node.liste_contenu.field_card
     - field.field.node.liste_contenu.field_reference_contenu
     - field.field.node.liste_contenu.field_url
     - node.type.liste_contenu
@@ -14,6 +15,15 @@ targetEntityType: node
 bundle: liste_contenu
 mode: default
 content:
+  field_card:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 113
+    region: content
   field_reference_contenu:
     type: entity_reference_revisions_entity_view
     label: above
