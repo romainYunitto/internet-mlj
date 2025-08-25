@@ -1,0 +1,34 @@
+uuid: 675be4b4-2adc-4e78-a546-48b0e8230678
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bloc_card.field_card
+    - field.field.paragraph.bloc_card.field_titre
+    - paragraphs.paragraphs_type.bloc_card
+  module:
+    - entity_reference_revisions
+id: paragraph.bloc_card.default
+targetEntityType: paragraph
+bundle: bloc_card
+mode: default
+content:
+  field_card:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_titre:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

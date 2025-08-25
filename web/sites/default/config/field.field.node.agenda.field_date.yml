@@ -1,0 +1,21 @@
+uuid: f0a9d3f1-137a-4c95-a52d-96ab51a6b949
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date
+    - node.type.agenda
+  module:
+    - datetime
+id: node.agenda.field_date
+field_name: field_date
+entity_type: node
+bundle: agenda
+label: 'date de debut'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,28 @@
+uuid: d7575f5d-a581-455a-b81d-5e5674c59a62
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.restricted_html
+    - paragraphs.paragraphs_type.accordeon
+  module:
+    - text
+id: paragraph.accordeon.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: accordeon
+label: body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - restricted_html
+    - full_html
+field_type: text_long

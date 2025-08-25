@@ -1,0 +1,29 @@
+uuid: cfe34b85-dbb4-48a8-bb82-1c77dac58b9e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.decouvrir
+    - field.storage.node.field_decouvrir
+    - node.type.accueil
+id: node.accueil.field_decouvrir
+field_name: field_decouvrir
+entity_type: node
+bundle: accueil
+label: Decouvrir
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:block_content'
+  handler_settings:
+    target_bundles:
+      decouvrir: decouvrir
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

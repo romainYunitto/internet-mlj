@@ -1,0 +1,55 @@
+uuid: f7af07a5-c525-41b6-a355-356528e37600
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.amenagement
+    - field.storage.block_content.field_redirection_amenagement
+    - paragraphs.paragraphs_type.redirection_amenagement
+  module:
+    - entity_reference_revisions
+id: block_content.amenagement.field_redirection_amenagement
+field_name: field_redirection_amenagement
+entity_type: block_content
+bundle: amenagement
+label: 'redirection amenagement'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      redirection_amenagement: redirection_amenagement
+    negate: 0
+    target_bundles_drag_drop:
+      accordeon:
+        weight: 11
+        enabled: false
+      bloc_actualite:
+        weight: 12
+        enabled: false
+      bloc_card:
+        weight: 13
+        enabled: false
+      card:
+        weight: 14
+        enabled: false
+      classique:
+        weight: 15
+        enabled: false
+      paragraphe_image:
+        weight: 16
+        enabled: false
+      paragraphe_menu:
+        weight: 17
+        enabled: false
+      redirection_amenagement:
+        weight: 10
+        enabled: true
+      side:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

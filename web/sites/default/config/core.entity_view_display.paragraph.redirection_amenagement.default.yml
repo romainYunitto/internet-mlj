@@ -1,0 +1,41 @@
+uuid: 1613806d-05ea-4066-9567-866917513ee0
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.redirection_amenagement.field_image
+    - field.field.paragraph.redirection_amenagement.field_redirection
+    - paragraphs.paragraphs_type.redirection_amenagement
+  module:
+    - image
+    - link
+id: paragraph.redirection_amenagement.default
+targetEntityType: paragraph
+bundle: redirection_amenagement
+mode: default
+content:
+  field_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_redirection:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true

@@ -1,0 +1,7 @@
+name: 'Custom api'
+type: module
+description: 'Moule pour les routes custom.'
+core_version_requirement: ^11
+package: Custom
+version: 1.0
+dependencies: []

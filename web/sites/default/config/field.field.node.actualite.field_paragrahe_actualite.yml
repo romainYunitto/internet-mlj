@@ -1,0 +1,40 @@
+uuid: 9e324d2d-757a-4a2c-984a-1d20a5229263
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragrahe_actualite
+    - node.type.actualite
+    - paragraphs.paragraphs_type.bloc_actualite
+  module:
+    - entity_reference_revisions
+id: node.actualite.field_paragrahe_actualite
+field_name: field_paragrahe_actualite
+entity_type: node
+bundle: actualite
+label: 'paragrahe actualite'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      bloc_actualite: bloc_actualite
+    negate: 0
+    target_bundles_drag_drop:
+      accordeon:
+        weight: 6
+        enabled: false
+      bloc_actualite:
+        weight: 5
+        enabled: true
+      classique:
+        weight: 7
+        enabled: false
+      side:
+        weight: 8
+        enabled: false
+field_type: entity_reference_revisions

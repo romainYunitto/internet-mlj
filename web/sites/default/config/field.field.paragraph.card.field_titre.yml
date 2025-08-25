@@ -1,0 +1,19 @@
+uuid: 90d2a24d-1bfc-4aec-a990-8282bb3bc2cf
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_titre
+    - paragraphs.paragraphs_type.card
+id: paragraph.card.field_titre
+field_name: field_titre
+entity_type: paragraph
+bundle: card
+label: titre
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

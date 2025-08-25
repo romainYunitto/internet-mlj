@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: ijfbzDTN4CbE7Sr-6ubWzy_t1vH4OtU1doNCLssVz-4
+langcode: fr
+uuid: 3379dd37-29a2-4fc3-96d4-23e261a3eab0
+name: internet-mlj
+mail: dev1@yunitto.fr
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: fr
+mail_notification: null

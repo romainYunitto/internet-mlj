@@ -1,0 +1,73 @@
+uuid: aaead9ce-3397-43ae-aa8c-9e2fd1c36ebc
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.actualite.field_entete
+    - field.field.node.actualite.field_image
+    - field.field.node.actualite.field_paragrahe_actualite
+    - field.field.node.actualite.field_tag
+    - field.field.node.actualite.field_url
+    - image.style.wide
+    - node.type.actualite
+  module:
+    - entity_reference_revisions
+    - image
+    - text
+    - user
+id: node.actualite.default
+targetEntityType: node
+bundle: actualite
+mode: default
+content:
+  field_entete:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: wide
+      image_loading:
+        attribute: eager
+    third_party_settings: {  }
+    weight: -1
+    region: content
+  field_paragrahe_actualite:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_tag:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_url:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

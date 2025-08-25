@@ -1,0 +1,21 @@
+uuid: 44e7638b-098f-432f-b629-b4871b186a3d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.message_important
+    - field.storage.block_content.field_type_de_message
+  module:
+    - options
+id: block_content.message_important.field_type_de_message
+field_name: field_type_de_message
+entity_type: block_content
+bundle: message_important
+label: 'type de message'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

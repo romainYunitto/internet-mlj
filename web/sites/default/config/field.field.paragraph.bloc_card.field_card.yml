@@ -1,0 +1,54 @@
+uuid: d10bbe6c-1f31-43ff-8703-73602dd19b92
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_card
+    - paragraphs.paragraphs_type.bloc_card
+    - paragraphs.paragraphs_type.card
+    - paragraphs.paragraphs_type.side
+  module:
+    - entity_reference_revisions
+id: paragraph.bloc_card.field_card
+field_name: field_card
+entity_type: paragraph
+bundle: bloc_card
+label: card
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      card: card
+      side: side
+    negate: 0
+    target_bundles_drag_drop:
+      accordeon:
+        weight: 10
+        enabled: false
+      bloc_actualite:
+        weight: 11
+        enabled: false
+      bloc_card:
+        weight: 9
+        enabled: false
+      card:
+        weight: 12
+        enabled: true
+      classique:
+        weight: 13
+        enabled: false
+      paragraphe_image:
+        weight: 14
+        enabled: false
+      paragraphe_menu:
+        weight: 15
+        enabled: false
+      side:
+        weight: 16
+        enabled: true
+field_type: entity_reference_revisions

@@ -1,0 +1,45 @@
+uuid: 84faaa9b-fef6-4da4-a4d4-5989bcbeeec6
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bloc_actualite.field_body
+    - field.field.paragraph.bloc_actualite.field_image
+    - field.field.paragraph.bloc_actualite.field_sous_titre
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.bloc_actualite
+  module:
+    - image
+    - text
+id: paragraph.bloc_actualite.default
+targetEntityType: paragraph
+bundle: bloc_actualite
+mode: default
+content:
+  field_body:
+    type: text_textarea
+    weight: 0
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: image_image
+    weight: 2
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_sous_titre:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

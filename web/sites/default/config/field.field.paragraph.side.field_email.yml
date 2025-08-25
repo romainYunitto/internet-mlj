@@ -1,0 +1,19 @@
+uuid: 9b7299ae-9fe2-4b41-9473-343449194723
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_email
+    - paragraphs.paragraphs_type.side
+id: paragraph.side.field_email
+field_name: field_email
+entity_type: paragraph
+bundle: side
+label: email
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

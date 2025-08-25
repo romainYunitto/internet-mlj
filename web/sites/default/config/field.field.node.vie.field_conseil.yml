@@ -1,0 +1,22 @@
+uuid: 52704ab9-4b11-461e-9fcd-375b4edfaed7
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_conseil
+    - node.type.vie
+  module:
+    - text
+id: node.vie.field_conseil
+field_name: field_conseil
+entity_type: node
+bundle: vie
+label: conseil
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

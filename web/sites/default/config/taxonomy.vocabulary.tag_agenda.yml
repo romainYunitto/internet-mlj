@@ -1,0 +1,9 @@
+uuid: 7392e8f8-2e05-4f96-a860-539988debde8
+langcode: fr
+status: true
+dependencies: {  }
+name: 'tag agenda'
+vid: tag_agenda
+description: null
+weight: 0
+new_revision: false

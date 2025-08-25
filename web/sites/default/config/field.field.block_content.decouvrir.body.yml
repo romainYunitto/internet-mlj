@@ -1,0 +1,24 @@
+uuid: ce626e10-c7df-42ff-b612-43763c3cda72
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.decouvrir
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.decouvrir.body
+field_name: body
+entity_type: block_content
+bundle: decouvrir
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

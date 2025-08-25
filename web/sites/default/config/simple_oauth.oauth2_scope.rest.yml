@@ -1,0 +1,22 @@
+uuid: f4262880-9e75-4462-b404-2101e3b06a8a
+langcode: fr
+status: true
+dependencies: {  }
+id: rest
+name: rest
+description: 'scope user'
+grant_types:
+  refresh_token:
+    status: false
+    description: ''
+  authorization_code:
+    status: false
+    description: ''
+  client_credentials:
+    status: true
+    description: ''
+umbrella: false
+parent: _none
+granularity_id: role
+granularity_configuration:
+  role: authenticated

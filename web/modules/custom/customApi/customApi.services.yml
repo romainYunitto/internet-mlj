@@ -1,0 +1,6 @@
+services:
+  custom_api.bearer_service_check:
+    class: Drupal\customApi\Service\BearerAccessCheck
+    arguments: ['@request_stack']
+    tags:
+      - { name: access_check, applies_to: _custom_access }

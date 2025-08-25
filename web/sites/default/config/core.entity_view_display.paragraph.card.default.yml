@@ -1,0 +1,32 @@
+uuid: bad57ffa-ce0e-43c0-b90a-fcfcb9b0ac39
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card.field_body
+    - field.field.paragraph.card.field_titre
+    - paragraphs.paragraphs_type.card
+  module:
+    - text
+id: paragraph.card.default
+targetEntityType: paragraph
+bundle: card
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_titre:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

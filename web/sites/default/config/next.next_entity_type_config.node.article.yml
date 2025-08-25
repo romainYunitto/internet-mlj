@@ -1,0 +1,9 @@
+uuid: b6ee69b9-331e-421a-90bb-5539a42fe5a2
+langcode: fr
+status: true
+dependencies: {  }
+id: node.article
+site_resolver: ''
+configuration: {  }
+revalidator: ''
+revalidator_configuration: {  }

@@ -1,0 +1,47 @@
+uuid: 52b7e65d-3b2a-47a0-b86b-d36dd2ddc907
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.message_important
+    - field.field.block_content.message_important.body
+    - field.field.block_content.message_important.field_type_de_message
+  module:
+    - text
+id: block_content.message_important.default
+targetEntityType: block_content
+bundle: message_important
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 26
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_type_de_message:
+    type: options_select
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }
