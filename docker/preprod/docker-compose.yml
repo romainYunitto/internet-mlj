@@ -11,10 +11,18 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       - db_preprod:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
 
   php:
-    image: wodby/drupal-php:8.3-dev-4.69.2
+    image: wodby/drupal-php:${PHP_TAG}
     container_name: "preprod-${PROJECT_NAME}_php"
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    user: "${MY_UID:-1000}:${MY_GID:-1000}"
     restart: unless-stopped
     environment:
       DB_HOST: ${DB_HOST}

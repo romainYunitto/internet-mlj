@@ -13,12 +13,12 @@ services:
       - db_prod:/var/lib/mysql
 
   php:
-    image: wodby/drupal-php:8.3-4.69.2  # Version stable pour la production
+    image: wodby/drupal-php:${PHP_TAG}
     container_name: "php_prod"
     restart: unless-stopped
     environment:
       DB_HOST: ${DB_HOST}
-      DB_USER: ${DB_USER}  
+      DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
       DB_DRIVER: ${DB_DRIVER}
@@ -44,8 +44,8 @@ services:
     volumes:
       - ${PROJECT_ROOT}:/var/www/html:cached
       - files_prod:/var/www/html/web/sites/default/files
-    ports:
-      - "${NGINX_PORT}:80"
+#    ports:
+#      - "${NGINX_PORT}:80"
 
 volumes:
   db_prod:

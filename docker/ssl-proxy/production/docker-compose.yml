@@ -5,21 +5,25 @@ services:
     restart: always
     ports:
       - "80:80"
-      - "443:443" 
+      - "443:443"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./ssl:/etc/nginx/ssl:ro
+      - ../nginx.conf/default.conf:/etc/nginx/nginx.conf:ro
+      - ../ssl:/etc/nginx/ssl:ro
     networks:
       - proxy-network
       - internet-network
       - intranet-network
+      - nextjs-network
 
 networks:
   proxy-network:
     driver: bridge
   internet-network:
     external: true
-    name: internet-mlj_production_default
+    name: internet-mlj-prod_default
   intranet-network:
     external: true
-    name: infra-mlj_production_drupal
+    name: production_drupal
+  nextjs-network:
+    external: true
+    name: production_default
