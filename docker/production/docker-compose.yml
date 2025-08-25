@@ -1,0 +1,98 @@
+services:
+  mariadb:
+    image: wodby/mariadb:11.4-3.32.2
+    container_name: "prod-internet-mlj_mariadb"
+    stop_grace_period: 30s
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - drupal
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  php:
+    image: wodby/drupal-php:8.3-4.69.2
+    container_name: "prod-internet-mlj_php"
+    restart: unless-stopped
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    environment:
+      PHP_FPM_USER: wodby
+      PHP_FPM_GROUP: wodby
+      PHP_MEMORY_LIMIT: ${PHP_MEMORY_LIMIT}
+      PHP_MAX_EXECUTION_TIME: ${PHP_MAX_EXECUTION_TIME}
+      PHP_OPCACHE_MAX_ACCELERATED_FILES: ${PHP_OPCACHE_MAX_ACCELERATED_FILES}
+      PHP_REALPATH_CACHE_SIZE: ${PHP_REALPATH_CACHE_SIZE}
+      PHP_OPCACHE_ENABLE: ${PHP_OPCACHE_ENABLE}
+      PHP_OPCACHE_MEMORY_CONSUMPTION: ${PHP_OPCACHE_MEMORY_CONSUMPTION}
+      DB_HOST: mariadb
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_DRIVER: mysql
+    volumes:
+      - ../..:/var/www/html:cached,delegated
+      - php_temp:/tmp
+    user: "1000:1000"
+    networks:
+      - drupal
+    healthcheck:
+      test: ["CMD", "php-fpm", "-t"]
+      timeout: 10s
+      retries: 3
+
+  nginx:
+    image: wodby/nginx:1.29-5.44.2
+    container_name: "prod-internet-mlj_nginx"
+    restart: unless-stopped
+    depends_on:
+      - php
+    environment:
+      NGINX_STATIC_OPEN_FILE_CACHE: "on"
+      NGINX_ERROR_LOG_LEVEL: error
+      NGINX_BACKEND_HOST: php
+      NGINX_SERVER_ROOT: /var/www/html/web
+      NGINX_VHOST_PRESET: drupal11
+      NGINX_SERVER_NAME: "localhost"
+    volumes:
+      - ../..:/var/www/html:cached
+    expose:
+      - "80"
+    networks:
+      - drupal
+      - proxy-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.admin.rule=Host(`admin.manteslajolie.fr`)"
+      - "traefik.http.routers.admin.tls=true"
+      - "traefik.http.services.admin.loadbalancer.server.port=80"
+      - "traefik.docker.network=proxy-network"
+
+  mailpit:
+    image: axllent/mailpit
+    container_name: "prod-internet-mlj_mailpit"
+    restart: unless-stopped
+    networks:
+      - drupal
+
+volumes:
+  mariadb_data:
+    driver: local
+  php_temp:
+    driver: local
+
+networks:
+  drupal:
+    external: false
+  proxy-network:
+    name: proxy-network
+    external: true

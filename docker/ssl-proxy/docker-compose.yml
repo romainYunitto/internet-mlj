@@ -1,0 +1,27 @@
+services:
+  nginx-proxy:
+    container_name: nginx-ssl-proxy-prod
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d:ro
+      - ${SSL_CERT_PATH}:/etc/nginx/certs:ro
+    networks:
+      - proxy-network
+    environment:
+      - DOMAIN_WWW=${DOMAIN_WWW}
+      - DOMAIN_INTRANET=${DOMAIN_INTRANET}
+      - DOMAIN_ADMIN=${DOMAIN_ADMIN}
+    healthcheck:
+      test: ["CMD", "nginx", "-t"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  proxy-network:
+    name: proxy-network
+    external: true
