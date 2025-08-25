@@ -1,0 +1,28 @@
+uuid: 7fc9cbc4-1041-48c7-adb1-0e7a0f8db8cd
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_adresse
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.restricted_html
+    - node.type.agenda
+  module:
+    - text
+id: node.agenda.field_adresse
+field_name: field_adresse
+entity_type: node
+bundle: agenda
+label: adresse
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - restricted_html
+    - full_html
+field_type: text

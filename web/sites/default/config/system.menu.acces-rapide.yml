@@ -1,0 +1,8 @@
+uuid: 78c65433-90ce-457b-8484-34fe4bfd890d
+langcode: fr
+status: true
+dependencies: {  }
+id: acces-rapide
+label: 'Acces rapide'
+description: ''
+locked: false

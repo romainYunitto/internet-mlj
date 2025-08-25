@@ -1,0 +1,10 @@
+uuid: 014a6fb3-a835-43c4-a0e1-e685c31227b7
+langcode: fr
+status: true
+dependencies: {  }
+id: bloc_card
+label: 'bloc card'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

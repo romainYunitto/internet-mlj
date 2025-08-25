@@ -1,0 +1,19 @@
+uuid: 9f14b072-ccea-4391-bdb9-c9c47fff7285
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_page
+    - paragraphs.paragraphs_type.categorie
+id: paragraph.categorie.field_page
+field_name: field_page
+entity_type: paragraph
+bundle: categorie
+label: page
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

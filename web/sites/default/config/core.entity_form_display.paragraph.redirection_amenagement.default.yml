@@ -1,0 +1,36 @@
+uuid: 19b9ae60-d59a-4247-ab12-3a21c2dff172
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.redirection_amenagement.field_image
+    - field.field.paragraph.redirection_amenagement.field_redirection
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.redirection_amenagement
+  module:
+    - image
+    - link
+id: paragraph.redirection_amenagement.default
+targetEntityType: paragraph
+bundle: redirection_amenagement
+mode: default
+content:
+  field_image:
+    type: image_image
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_redirection:
+    type: link_default
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

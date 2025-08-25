@@ -1,0 +1,19 @@
+uuid: 04de3663-4c0f-49ed-a679-c8c84179ed71
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_url
+    - node.type.actualite
+id: node.actualite.field_url
+field_name: field_url
+entity_type: node
+bundle: actualite
+label: url
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

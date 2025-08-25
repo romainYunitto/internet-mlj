@@ -1,0 +1,8 @@
+uuid: 90d117db-0670-4a18-aba4-4722a77310be
+langcode: fr
+status: true
+dependencies: {  }
+id: amenagement
+label: Amenagement
+revision: false
+description: null

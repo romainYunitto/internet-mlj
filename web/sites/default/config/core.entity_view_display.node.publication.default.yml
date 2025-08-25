@@ -1,0 +1,63 @@
+uuid: b98a8856-9176-4e50-9305-97147c679cde
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.publication.field_categorie_publication
+    - field.field.node.publication.field_image
+    - field.field.node.publication.field_magazine
+    - field.field.node.publication.field_url
+    - image.style.wide
+    - node.type.publication
+  module:
+    - file
+    - image
+    - user
+id: node.publication.default
+targetEntityType: node
+bundle: publication
+mode: default
+content:
+  field_categorie_publication:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: wide
+      image_loading:
+        attribute: eager
+    third_party_settings: {  }
+    weight: -1
+    region: content
+  field_magazine:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_url:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

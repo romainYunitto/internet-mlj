@@ -1,0 +1,11 @@
+uuid: 89e4eade-976a-46f6-a2dd-5b5a3da6d25a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.decouvrir
+id: block_content.decouvrir
+target_entity_type_id: block_content
+target_bundle: decouvrir
+default_langcode: site_default
+language_alterable: false

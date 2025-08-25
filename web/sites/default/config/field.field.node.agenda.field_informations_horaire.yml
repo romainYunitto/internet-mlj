@@ -1,0 +1,28 @@
+uuid: b192ac71-d3c7-40c5-b2a4-ec63a148dd9d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_informations_horaire
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.restricted_html
+    - node.type.agenda
+  module:
+    - text
+id: node.agenda.field_informations_horaire
+field_name: field_informations_horaire
+entity_type: node
+bundle: agenda
+label: 'informations horaire'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - restricted_html
+    - full_html
+field_type: text_long

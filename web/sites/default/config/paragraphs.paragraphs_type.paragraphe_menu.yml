@@ -1,0 +1,10 @@
+uuid: 3a8d978f-6d1b-488b-b143-a97a99726b68
+langcode: fr
+status: true
+dependencies: {  }
+id: paragraphe_menu
+label: 'paragraphe menu'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

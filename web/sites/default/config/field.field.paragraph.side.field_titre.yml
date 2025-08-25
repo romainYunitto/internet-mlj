@@ -1,0 +1,19 @@
+uuid: 8c8d06ed-17e8-461d-a685-8665df979998
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_titre
+    - paragraphs.paragraphs_type.side
+id: paragraph.side.field_titre
+field_name: field_titre
+entity_type: paragraph
+bundle: side
+label: titre
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
