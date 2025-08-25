@@ -1,29 +1,25 @@
 services:
-  nginx-proxy:
-    container_name: nginx-ssl-proxy-prod
   ssl-proxy:
     image: nginx:alpine
-    container_name: ssl_proxy_global
-    restart: unless-stopped
+    container_name: ssl_proxy_production
+    restart: always
     ports:
       - "80:80"
-      - "443:443"
+      - "443:443" 
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ./ssl:/etc/nginx/ssl:ro
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     networks:
       - proxy-network
-      - drupal-network
+      - internet-network
       - intranet-network
 
 networks:
   proxy-network:
     driver: bridge
-  drupal-network:
+  internet-network:
     external: true
-    name: internet-mlj_default
+    name: internet-mlj_production_default
   intranet-network:
     external: true
-    name: infra-mlj_drupal
+    name: infra-mlj_production_drupal
