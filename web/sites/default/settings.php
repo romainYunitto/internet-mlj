@@ -847,31 +847,10 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 # if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
-$databases['default']['default'] = [
-    'host' => 'mariadb',
-    'database' => 'drupal',
-    'username' => 'drupal',
-    'password' => 'drupal',
-    'driver' => 'mysql',
-    'prefix' => '',
-];
 
-$settings['config_sync_directory'] = 'sites/default/config/';
-$settings['hash_salt'] = '3nwAAZx7yJVNjV9z';
 
-$settings['trusted_host_patterns'] = array(
-    '.*'
-);$databases['default']['default'] = [
-    'host' => 'mariadb',
-    'database' => 'drupal',
-    'username' => 'drupal',
-    'password' => 'drupal',
-    'driver' => 'mysql',
-    'prefix' => '',
-];
 
 $settings['config_sync_directory'] = 'sites/default/config';
-$settings['hash_salt'] = 'ONfWcp6fYZO9Ufpt';
 
 $settings['trusted_host_patterns'] = array(
     '.*'
@@ -879,3 +858,21 @@ $settings['trusted_host_patterns'] = array(
 $config['jsonapi_extras.jsonapi_resource_config.menu_link_content--menu_link_content']['disabled'] = FALSE;
 $config['system.logging']['error_level'] = "all";
 $settings['hash_salt'] = '33ccd2cefaf8d0f4ad7019a7cf76c0a3595f568e3af5b179ee47e2cacadc7c27';
+
+// Production environment override
+if (isset($_ENV['DB_HOST']) && $_ENV['DB_HOST'] === 'mariadb') {
+  $databases['default']['default'] = [
+    'host' => $_ENV['DB_HOST'],
+    'database' => $_ENV['DB_NAME'],
+    'username' => $_ENV['DB_USER'],
+    'password' => $_ENV['DB_PASSWORD'],
+    'driver' => $_ENV['DB_DRIVER'],
+    'prefix' => '',
+    'port' => 3306,
+  ];
+  
+  // Use production hash salt if available
+  if (isset($_ENV['DRUPAL_HASH_SALT']) && !empty($_ENV['DRUPAL_HASH_SALT'])) {
+    $settings['hash_salt'] = $_ENV['DRUPAL_HASH_SALT'];
+  }
+}

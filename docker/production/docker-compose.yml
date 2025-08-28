@@ -32,6 +32,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
       DB_DRIVER: ${DB_DRIVER}
+      DRUPAL_HASH_SALT: ${DRUPAL_HASH_SALT}
       PHP_FPM_USER: wodby
       PHP_FPM_GROUP: wodby
     networks:
