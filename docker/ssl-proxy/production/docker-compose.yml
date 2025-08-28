@@ -20,7 +20,7 @@ networks:
     driver: bridge
   drupal-network:
     external: true
-    name: internet-mlj_production_default
+    name: internet-mlj_default
   intranet-network:
     external: true
     name: intramlj_production_default
