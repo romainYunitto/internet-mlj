@@ -1,0 +1,28 @@
+uuid: 527b2be0-3d49-4d62-92b5-9fb567791a81
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.restricted_html
+    - paragraphs.paragraphs_type.classique
+  module:
+    - text
+id: paragraph.classique.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: classique
+label: body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - restricted_html
+    - full_html
+field_type: text_long

@@ -1,0 +1,23 @@
+uuid: 56a52b23-a695-4c67-b50e-97d863a57c17
+langcode: fr
+status: true
+dependencies:
+  module:
+    - file
+    - paragraphs
+id: paragraph.field_telechargement
+field_name: field_telechargement
+entity_type: paragraph
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+module: file
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

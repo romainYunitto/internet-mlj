@@ -1,0 +1,19 @@
+uuid: 94a1cb35-5028-46ca-a1d9-d0b0716ee876
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_entete
+field_name: field_entete
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

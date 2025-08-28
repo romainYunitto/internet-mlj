@@ -1,0 +1,18 @@
+uuid: 8604faf0-e421-42fa-a371-609673ac1124
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Vie
+type: vie
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

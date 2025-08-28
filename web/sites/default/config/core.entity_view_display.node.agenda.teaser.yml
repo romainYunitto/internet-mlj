@@ -1,0 +1,56 @@
+uuid: 6d8b0173-bc8d-4128-9999-abb9c19793a3
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.agenda.field_accordeon
+    - field.field.node.agenda.field_adresse
+    - field.field.node.agenda.field_carousel
+    - field.field.node.agenda.field_categorie
+    - field.field.node.agenda.field_date
+    - field.field.node.agenda.field_date_de_fin
+    - field.field.node.agenda.field_entete
+    - field.field.node.agenda.field_image
+    - field.field.node.agenda.field_informations_horaire
+    - field.field.node.agenda.field_lieu
+    - field.field.node.agenda.field_url
+    - image.style.medium
+    - node.type.agenda
+  module:
+    - image
+    - user
+id: node.agenda.teaser
+targetEntityType: node
+bundle: agenda
+mode: teaser
+content:
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: -1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_accordeon: true
+  field_adresse: true
+  field_carousel: true
+  field_categorie: true
+  field_date: true
+  field_date_de_fin: true
+  field_entete: true
+  field_informations_horaire: true
+  field_lieu: true
+  field_url: true
+  langcode: true
+  search_api_excerpt: true

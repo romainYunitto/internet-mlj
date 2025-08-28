@@ -1,0 +1,28 @@
+uuid: ee0423a2-a877-4b11-8dee-bcf9c97c974e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_entete
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.restricted_html
+    - node.type.actualite
+  module:
+    - text
+id: node.actualite.field_entete
+field_name: field_entete
+entity_type: node
+bundle: actualite
+label: entete
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - restricted_html
+    - full_html
+field_type: text_long

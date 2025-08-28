@@ -1,0 +1,40 @@
+uuid: d1ac9494-baf1-40b4-a91a-a504a22517f0
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_accordeon
+    - node.type.agenda
+    - paragraphs.paragraphs_type.accordeon
+  module:
+    - entity_reference_revisions
+id: node.agenda.field_accordeon
+field_name: field_accordeon
+entity_type: node
+bundle: agenda
+label: accordeon
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      accordeon: accordeon
+    negate: 0
+    target_bundles_drag_drop:
+      accordeon:
+        weight: 2
+        enabled: true
+      bloc_actualite:
+        weight: 6
+        enabled: false
+      classique:
+        weight: 7
+        enabled: false
+      side:
+        weight: 8
+        enabled: false
+field_type: entity_reference_revisions

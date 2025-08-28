@@ -26,4 +26,4 @@ networks:
     name: intra-mlj-preprod_drupal
   nextjs-network:
     external: true
-    name: stagging_default
+    name: mlj-web_stagging_default

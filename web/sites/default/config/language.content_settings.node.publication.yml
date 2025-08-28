@@ -1,0 +1,11 @@
+uuid: e2283815-6e0c-44ae-8208-1874621bd1ae
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.publication
+id: node.publication
+target_entity_type_id: node
+target_bundle: publication
+default_langcode: site_default
+language_alterable: false

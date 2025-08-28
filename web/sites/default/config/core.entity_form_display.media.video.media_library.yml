@@ -1,0 +1,21 @@
+uuid: 1a331ec5-8723-4003-a163-66ae05fa49ee
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.video.field_media_video_file
+    - media.type.video
+id: media.video.media_library
+targetEntityType: media
+bundle: video
+mode: media_library
+content: {  }
+hidden:
+  created: true
+  field_media_video_file: true
+  langcode: true
+  name: true
+  path: true
+  status: true
+  uid: true

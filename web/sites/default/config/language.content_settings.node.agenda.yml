@@ -1,0 +1,11 @@
+uuid: 544424ab-a79c-4fc6-b596-82fa350e076b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.agenda
+id: node.agenda
+target_entity_type_id: node
+target_bundle: agenda
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,19 @@
+uuid: 8b6de248-3f3f-4449-94e3-44daa936f2ec
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_conseil
+field_name: field_conseil
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

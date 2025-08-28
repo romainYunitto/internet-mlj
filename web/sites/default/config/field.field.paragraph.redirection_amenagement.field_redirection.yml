@@ -1,0 +1,23 @@
+uuid: f52c2c26-af3f-4289-8583-055a40e71534
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_redirection
+    - paragraphs.paragraphs_type.redirection_amenagement
+  module:
+    - link
+id: paragraph.redirection_amenagement.field_redirection
+field_name: field_redirection
+entity_type: paragraph
+bundle: redirection_amenagement
+label: redirection
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

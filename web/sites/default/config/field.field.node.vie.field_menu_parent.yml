@@ -1,0 +1,28 @@
+uuid: 6e0a37d7-756b-40cc-b9cf-49d8c0d87c3f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_menu_parent
+    - node.type.vie
+id: node.vie.field_menu_parent
+field_name: field_menu_parent
+entity_type: node
+bundle: vie
+label: 'menu parent'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:menu_link_content'
+  handler_settings:
+    target_bundles:
+      menu_link_content: menu_link_content
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

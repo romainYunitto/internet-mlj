@@ -1,0 +1,104 @@
+uuid: d55271a5-f7e2-4865-b927-86fd9c0ca6b4
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.side.field_adresse
+    - field.field.paragraph.side.field_email
+    - field.field.paragraph.side.field_horaire
+    - field.field.paragraph.side.field_image
+    - field.field.paragraph.side.field_liste_actualites
+    - field.field.paragraph.side.field_redirection
+    - field.field.paragraph.side.field_telechargement
+    - field.field.paragraph.side.field_telephone
+    - field.field.paragraph.side.field_titre
+    - paragraphs.paragraphs_type.side
+  module:
+    - file
+    - image
+    - link
+id: paragraph.side.default
+targetEntityType: paragraph
+bundle: side
+mode: default
+content:
+  field_adresse:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_email:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_horaire:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_liste_actualites:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_redirection:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_telechargement:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_telephone:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_titre:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

@@ -1,0 +1,19 @@
+uuid: b625c1f8-4fba-4d9c-a147-a5c5936212bc
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_titre
+    - paragraphs.paragraphs_type.accordeon
+id: paragraph.accordeon.field_titre
+field_name: field_titre
+entity_type: paragraph
+bundle: accordeon
+label: titre
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

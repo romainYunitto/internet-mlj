@@ -1,0 +1,18 @@
+uuid: 8b2aca34-b589-4472-b9e0-fda8cb63cfa7
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: publication
+type: publication
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true
