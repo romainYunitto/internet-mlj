@@ -24,9 +24,8 @@ services:
     depends_on:
       mariadb:
         condition: service_healthy
-    user: root
+    user: "${MY_UID:-1000}:${MY_GID:-1000}"
     restart: unless-stopped
-    command: sh -c "chown -R ${MY_UID:-1000}:${MY_GID:-1000} /var/www/html && /docker-entrypoint.sh php-fpm"
     environment:
       DB_HOST: ${DB_HOST}
       DB_USER: ${DB_USER}

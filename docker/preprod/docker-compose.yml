@@ -27,7 +27,12 @@ services:
     #    user: "${MY_UID:-1000}:${MY_GID:-1000}"
     user: root
     restart: unless-stopped
-    command: sh -c "chown -R ${MY_UID:-1000}:${MY_GID:-1000} /var/www/html && /docker-entrypoint.sh php-fpm"
+    command: >
+      sh -c "
+        chown -R ${MY_UID:-1000}:${MY_GID:-1000} /var/www/html &&
+        git config --global --add safe.directory /var/www/html &&
+        /docker-entrypoint.sh php-fpm
+      "
     environment:
       DB_HOST: ${DB_HOST}
       DB_USER: ${DB_USER}
