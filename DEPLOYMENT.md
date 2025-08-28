@@ -5,12 +5,12 @@
 ### Environnements
 - **local** : Développement avec SSL proxy et mailpit
 - **recette** : Tests internes
-- **preprod** : Tests chez le prestataire 
+- **preprod** : Tests chez le prestataire
 - **production** : Environnement de production
 
 ### Applications
 1. **Internet-MLJ** : Drupal 11.2 back-office admin
-2. **MLJ-web** : NextJS front-office  
+2. **MLJ-web** : NextJS front-office
 3. **Intra-MLJ** : Drupal 11.2 intranet
 4. **SSL-proxy** : Reverse proxy HTTPS avec certificats wildcard
 
@@ -35,12 +35,12 @@
 - `files_local` : Fichiers publics Drupal
 
 **Recette :**
-- `db_recette` : Base de données MariaDB  
+- `db_recette` : Base de données MariaDB
 - `files_recette` : Fichiers publics Drupal
 
 **Préprod :**
 - `db_preprod` : Base de données MariaDB
-- `files_preprod` : Fichiers publics Drupal  
+- `files_preprod` : Fichiers publics Drupal
 
 **Production :**
 - `db_prod` : Base de données MariaDB
@@ -55,13 +55,13 @@ Les fichiers publics incluent images, documents et autres médias uploadés par 
 - **IMPORTANT** : Toutes les commandes docker doivent être exécutées avec `sudo`
 - Certificats SSL wildcard disponibles :
   - **Préprod** : `/data/docker/internetmantes/certs/`
-  - **Production** : `/data/docker/internetmantes/certs/`
+  - **Production** : `/data/docker/dockermantes/certs/`
 
 ### Chemins sur le serveur préprod
 ```
 /data/docker/internetmantes/
 ├── internet-mlj/     # Drupal Internet back-office
-├── MLJ-web/         # NextJS front-office  
+├── MLJ-web/         # NextJS front-office
 ├── intra-mlj/       # Drupal Intranet
 └── certs/           # Certificats SSL
     ├── wildcard.manteslajolie.fr.crt
@@ -77,13 +77,13 @@ Les fichiers publics incluent images, documents et autres médias uploadés par 
 
 **Options disponibles :**
 1. Déploiement complet (arrêt + redémarrage)
-2. Démarrage seulement  
+2. Démarrage seulement
 3. Arrêt seulement
 4. Vérification de l'état
 
 ### Services déployés dans l'ordre
 1. **Internet-MLJ** (Drupal back-office) - Port interne 80
-2. **Intra-MLJ** (Drupal intranet) - Port interne 80  
+2. **Intra-MLJ** (Drupal intranet) - Port interne 80
 3. **MLJ-web** (NextJS front-office) - Port interne 3000
 4. **SSL-proxy** (Reverse proxy) - Ports externes 80/443
 
@@ -100,7 +100,7 @@ sudo docker exec -u root preprod-internet-mlj_php chown -R wodby:wodby /var/www/
 sudo docker exec -u root preprod-internet-mlj_php chown -R wodby:wodby /var/www/html/web/sites/default/files
 ```
 
-### 2. Intra-MLJ (Drupal intranet) 
+### 2. Intra-MLJ (Drupal intranet)
 ```bash
 cd /data/docker/internetmantes/intra-mlj
 sudo docker compose -f docker/preprod/docker-compose.yml up -d
@@ -113,7 +113,7 @@ sudo docker exec -u root preprod-intranet-preprod_php_v2 chown -R wodby:wodby /v
 
 ### 3. MLJ-web (NextJS front-office)
 ```bash
-cd /data/docker/internetmantes/MLJ-web  
+cd /data/docker/internetmantes/MLJ-web
 sudo docker compose -f docker/stagging/compose.yml up -d
 ```
 
@@ -136,7 +136,7 @@ sudo docker ps --format "table {{.Names}}\\t{{.Status}}\\t{{.Ports}}"
 sudo docker logs preprod-internet-mlj_php --tail=20
 sudo docker logs preprod-internet-mlj_nginx --tail=20
 
-# SSL Proxy  
+# SSL Proxy
 sudo docker logs ssl_proxy_preprod --tail=20
 
 # NextJS
@@ -159,7 +159,7 @@ sudo docker logs next-app-stagging --tail=20
 
 **Préprod :**
 - pp-admin.manteslajolie.fr
-- pp-site.manteslajolie.fr  
+- pp-site.manteslajolie.fr
 - pp-intra.manteslajolie.fr
 
 **Production :**
@@ -178,7 +178,7 @@ Après le démarrage des containers, plusieurs étapes sont nécessaires :
 # Internet-MLJ
 sudo docker exec -u root preprod-internet-mlj_php composer install --no-dev --optimize-autoloader
 
-# Intra-MLJ  
+# Intra-MLJ
 sudo docker exec -u root preprod-intranet-preprod_php_v2 composer install --no-dev --optimize-autoloader
 ```
 
@@ -200,7 +200,7 @@ sudo docker exec -u root preprod-intranet-preprod_php_v2 chmod -R 755 /var/www/h
 # Vérifier settings.php
 sudo docker exec preprod-internet-mlj_php ls -la /var/www/html/web/sites/default/settings.php
 
-# Vérifier autoload.php  
+# Vérifier autoload.php
 sudo docker exec preprod-internet-mlj_php ls -la /var/www/html/web/autoload.php
 sudo docker exec preprod-internet-mlj_php ls -la /var/www/html/vendor/autoload.php
 ```
@@ -252,7 +252,7 @@ sudo docker exec -u root preprod-internet-mlj_php composer install --no-dev --op
 # Base de données
 sudo docker exec preprod-internet-mlj_mariadb mysqldump -u drupal -p drupal > backup.sql
 
-# Fichiers publics  
+# Fichiers publics
 sudo docker run --rm -v files_preprod:/data -v $(pwd):/backup alpine tar czf /backup/files_preprod.tar.gz /data
 ```
 
