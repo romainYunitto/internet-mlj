@@ -1,0 +1,41 @@
+services:
+  traefik:
+    image: traefik:v3.2
+    container_name: traefik-prod
+    restart: unless-stopped
+    command:
+      - "--api.dashboard=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--providers.file.directory=/etc/traefik/dynamic"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      # Redirect HTTP to HTTPS
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      # SSL Configuration
+      - "--certificatesresolvers.production.acme.tlschallenge=false"
+      - "--certificatesresolvers.production.acme.email=admin@manteslajolie.fr"
+      - "--certificatesresolvers.production.acme.storage=/letsencrypt/acme.json"
+      - "--log.level=INFO"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"  # Dashboard
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /data/docker/dockermantes/certs:/etc/ssl/certs:ro
+      - ./traefik:/etc/traefik/dynamic:ro
+    networks:
+      - proxy-network
+    labels:
+      - "traefik.enable=true"
+      # Dashboard
+      - "traefik.http.routers.traefik.rule=Host(`traefik.manteslajolie.fr`)"
+      - "traefik.http.routers.traefik.tls=true"
+      - "traefik.http.services.traefik.loadbalancer.server.port=8080"
+
+networks:
+  proxy-network:
+    name: proxy-network
+    external: true

@@ -1,0 +1,11 @@
+tls:
+  certificates:
+    - certFile: /etc/ssl/certs/wildcard.manteslajolie.fr.crt
+      keyFile: /etc/ssl/certs/wildcard.manteslajolie.fr.key
+      stores:
+        - default
+  stores:
+    default:
+      defaultCertificate:
+        certFile: /etc/ssl/certs/wildcard.manteslajolie.fr.crt
+        keyFile: /etc/ssl/certs/wildcard.manteslajolie.fr.key
