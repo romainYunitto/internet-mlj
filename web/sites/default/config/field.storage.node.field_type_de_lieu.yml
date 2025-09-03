@@ -12,14 +12,17 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: creche
-      label: Créche
+      value: enfance
+      label: 'Petite enfance'
     -
       value: maternelle
       label: Maternelle
     -
       value: elementaire
       label: Elémentaire
+    -
+      value: autre
+      label: Autre
   allowed_values_function: ''
 module: options
 locked: false

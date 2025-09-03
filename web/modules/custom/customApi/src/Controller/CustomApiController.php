@@ -552,13 +552,16 @@ class CustomApiController extends ControllerBase
   {
     switch ($type) {
       case 'enfance':
-        $typeLieu = "Enfance";
+        $typeLieu = "Petite enfance";
         break;
       case 'maternelle':
         $typeLieu = "Maternelle";
         break;
       case 'elementaire':
         $typeLieu = "Elémentaire";
+        break;
+      case 'autre':
+        $typeLieu = "Autre";
         break;
     }
     return $typeLieu;
