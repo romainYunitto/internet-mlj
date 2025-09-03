@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.actualite.field_paragrahe_actualite
     - field.field.node.actualite.field_tag
     - field.field.node.actualite.field_url
-    - image.style.medium
     - node.type.actualite
   module:
     - image
@@ -20,13 +19,10 @@ bundle: actualite
 mode: teaser
 content:
   field_image:
-    type: image
-    label: hidden
+    type: image_url
+    label: inline
     settings:
-      image_link: content
       image_style: medium
-      image_loading:
-        attribute: lazy
     third_party_settings: {  }
     weight: -1
     region: content

@@ -25,3 +25,19 @@ custom_api.periode:
     _controller: '\Drupal\customApi\Controller\CustomApiController::getAgendaPeriode'
   requirements:
     _custom_access: 'custom_api.bearer_service_check::access'
+
+
+custom_api.map:
+  path: '/jsonapi/custom/map'
+  defaults:
+    _controller: '\Drupal\customApi\Controller\CustomApiController::getMap'
+  requirements:
+    _custom_access: 'custom_api.bearer_service_check::access'
+
+custom_api.typeLieux:
+  path: '/jsonapi/custom/types-lieu'
+  defaults:
+    _controller: '\Drupal\customApi\Controller\CustomApiController::getTypes'
+    _title: 'Types de lieu'
+  requirements:
+    _custom_access: 'custom_api.bearer_service_check::access'

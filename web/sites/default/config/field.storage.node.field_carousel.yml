@@ -19,8 +19,8 @@ settings:
     uuid: ''
     alt: ''
     title: ''
-    width: null
-    height: null
+    width: 491
+    height: 349
 module: image
 locked: false
 cardinality: -1

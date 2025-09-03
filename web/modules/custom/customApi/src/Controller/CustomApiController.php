@@ -2,6 +2,8 @@
 
 namespace Drupal\customApi\Controller;
 
+use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
+use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityStorageException;
 use Drupal\Core\File\FileSystemInterface;
@@ -481,6 +483,85 @@ class CustomApiController extends ControllerBase
     return null;
   }
 
+  /**
+   * @throws InvalidPluginDefinitionException
+   * @throws PluginNotFoundException
+   */
+  public function getMap(Request $request)
+  {
+    $type = $request->query->get('type');
+    $query = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->getQuery()
+      ->accessCheck(TRUE)
+      ->condition('type', 'lieu');
+
+    $ids = $query->execute();
+    $nodes = Node::loadMultiple($ids);
+
+    $features = [];
+    $typeLieu = null;
+    if (!is_null($type)) {
+      $typeLieu = $this->getTypeLieu($type);
+    }
+    foreach ($nodes as $node) {
+      $lat = $node->get('field_latitude')->value ?? null;
+      $lon = $node->get('field_longitude')->value ?? null;
+      if ($lat && $lon) {
+        if (!is_null($type) && ($node->get('field_type_de_lieu')->value == $typeLieu ||
+            $node->get('field_type_de_lieu')->value == $type)) {
+          $features[] = [
+            'type' => 'Feature',
+            'geometry' => ['type' => 'Point', 'coordinates' => [(float)$lon, (float)$lat]],
+            'properties' => [
+              'id' => $node->id(),
+              'title' => $node->getTitle(),
+              'description' => $node->get('field_description')->value ?? '',
+              'adresse' => $node->get('field_adresse_lieu')->value ?? '',
+              'code_postal' => $node->get('field_code_postale')->value ?? '',
+              'ville' => $node->get('field_ville')->value ?? '',
+              'type' => $node->get('field_type_de_lieu')->value ?? '',
+              'telephone' => $node->get('field_telephone')->value ?? '',
+            ],
+          ];
+        }
+        if (is_null($type)) {
+          $features[] = [
+            'type' => 'Feature',
+            'geometry' => ['type' => 'Point', 'coordinates' => [(float)$lon, (float)$lat]],
+            'properties' => [
+              'id' => $node->id(),
+              'title' => $node->getTitle(),
+              'description' => $node->get('field_description')->value ?? '',
+              'adresse' => $node->get('field_adresse_lieu')->value ?? '',
+              'code_postal' => $node->get('field_code_postale')->value ?? '',
+              'ville' => $node->get('field_ville')->value ?? '',
+              'type' => $node->get('field_type_de_lieu')->value ?? '',
+              'telephone' => $node->get('field_telephone')->value ?? '',
+            ],
+          ];
+        }
+      }
+    }
+    return new JsonResponse(['type' => 'FeatureCollection', 'features' => $features]);
+  }
+
+  private function getTypeLieu(string $type)
+  {
+    switch ($type) {
+      case 'creche':
+        $typeLieu = "Crèche";
+        break;
+      case 'maternelle':
+        $typeLieu = "Maternelle";
+        break;
+      case 'elementaire':
+        $typeLieu = "Elémentaire";
+        break;
+    }
+    return $typeLieu;
+  }
+
   public function getAgendaPeriode(): JsonResponse
   {
     $periodes = [
@@ -491,6 +572,31 @@ class CustomApiController extends ControllerBase
     ];
 
     return new JsonResponse(['results' => $periodes]);
+  }
 
+  public function getTypes()
+  {
+    $field_definitions = \Drupal::service('entity_field.manager')
+      ->getFieldDefinitions('node', 'lieu'); // Nom de ton type de contenu
+
+    if (!isset($field_definitions['field_type_de_lieu'])) {
+      return new JsonResponse(['error' => 'Champ introuvable.'], 404);
+    }
+
+    /** @var \Drupal\Core\Field\FieldDefinitionInterface $field */
+    $field = $field_definitions['field_type_de_lieu'];
+    $settings = $field->getSettings();
+
+    $values = [];
+    foreach ($settings['allowed_values'] as $key => $label) {
+      $values[] = [
+        'key' => $key,
+        'label' => $label,
+      ];
+    }
+
+    return new JsonResponse([
+      'values' => $values,
+    ]);
   }
 }
