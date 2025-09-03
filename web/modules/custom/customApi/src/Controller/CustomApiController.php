@@ -538,6 +538,8 @@ class CustomApiController extends ControllerBase
               'ville' => $node->get('field_ville')->value ?? '',
               'type' => $node->get('field_type_de_lieu')->value ?? '',
               'telephone' => $node->get('field_telephone')->value ?? '',
+              'horaire' => $node->get('field_horaires')->value ?? '',
+              'capcite' => $node->get('field_capacite')->value ?? '',
             ],
           ];
         }
@@ -549,8 +551,8 @@ class CustomApiController extends ControllerBase
   private function getTypeLieu(string $type)
   {
     switch ($type) {
-      case 'creche':
-        $typeLieu = "Crèche";
+      case 'enfance':
+        $typeLieu = "Enfance";
         break;
       case 'maternelle':
         $typeLieu = "Maternelle";

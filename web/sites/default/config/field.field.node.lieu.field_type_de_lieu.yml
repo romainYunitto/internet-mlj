@@ -1,0 +1,21 @@
+uuid: b2fa8cab-db0a-4477-92b1-5a88a174c8eb
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_type_de_lieu
+    - node.type.lieu
+  module:
+    - options
+id: node.lieu.field_type_de_lieu
+field_name: field_type_de_lieu
+entity_type: node
+bundle: lieu
+label: 'type de lieu'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

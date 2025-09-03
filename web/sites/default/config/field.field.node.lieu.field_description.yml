@@ -1,0 +1,22 @@
+uuid: e5cedb10-4c99-4ef1-8b85-9def8e471533
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_description
+    - node.type.lieu
+  module:
+    - text
+id: node.lieu.field_description
+field_name: field_description
+entity_type: node
+bundle: lieu
+label: description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text

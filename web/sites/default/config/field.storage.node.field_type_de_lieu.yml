@@ -1,0 +1,30 @@
+uuid: ea8112c4-4158-4f2f-951f-77a0857a1f95
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_type_de_lieu
+field_name: field_type_de_lieu
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: creche
+      label: Créche
+    -
+      value: maternelle
+      label: Maternelle
+    -
+      value: elementaire
+      label: Elémentaire
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

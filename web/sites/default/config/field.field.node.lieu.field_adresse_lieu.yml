@@ -1,0 +1,19 @@
+uuid: 1611c85d-545e-4215-9aa7-f9c777b36407
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_adresse_lieu
+    - node.type.lieu
+id: node.lieu.field_adresse_lieu
+field_name: field_adresse_lieu
+entity_type: node
+bundle: lieu
+label: adresse
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

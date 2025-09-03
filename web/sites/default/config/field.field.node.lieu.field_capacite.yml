@@ -1,0 +1,19 @@
+uuid: e6f4ea84-d110-49b4-8228-8837429e64c0
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_capacite
+    - node.type.lieu
+id: node.lieu.field_capacite
+field_name: field_capacite
+entity_type: node
+bundle: lieu
+label: capacite
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

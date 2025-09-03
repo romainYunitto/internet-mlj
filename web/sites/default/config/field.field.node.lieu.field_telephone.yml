@@ -1,0 +1,19 @@
+uuid: 8d9f1dc8-1270-4a65-a5b1-0d3ada041f9f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_telephone
+    - node.type.lieu
+id: node.lieu.field_telephone
+field_name: field_telephone
+entity_type: node
+bundle: lieu
+label: telephone
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
