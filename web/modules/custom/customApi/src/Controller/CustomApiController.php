@@ -539,7 +539,7 @@ class CustomApiController extends ControllerBase
               'type' => $node->get('field_type_de_lieu')->value ?? '',
               'telephone' => $node->get('field_telephone')->value ?? '',
               'horaire' => $node->get('field_horaires')->value ?? '',
-              'capcite' => $node->get('field_capacite')->value ?? '',
+              'capacite' => $node->get('field_capacite')->value ?? '',
             ],
           ];
         }
