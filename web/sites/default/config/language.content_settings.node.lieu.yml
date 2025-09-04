@@ -1,0 +1,11 @@
+uuid: 28487dbe-e17e-48a6-992d-fb4702992d49
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.lieu
+id: node.lieu
+target_entity_type_id: node
+target_bundle: lieu
+default_langcode: site_default
+language_alterable: false

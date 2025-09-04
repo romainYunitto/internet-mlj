@@ -45,7 +45,7 @@ content:
     region: content
   field_carousel:
     type: image
-    label: above
+    label: inline
     settings:
       image_link: ''
       image_style: ''

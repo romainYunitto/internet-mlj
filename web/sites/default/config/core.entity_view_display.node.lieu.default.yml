@@ -1,0 +1,111 @@
+uuid: 998e8712-4117-4646-b711-449e39a1b07b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.lieu.field_adresse_lieu
+    - field.field.node.lieu.field_capacite
+    - field.field.node.lieu.field_code_postale
+    - field.field.node.lieu.field_description
+    - field.field.node.lieu.field_horaires
+    - field.field.node.lieu.field_latitude
+    - field.field.node.lieu.field_longitude
+    - field.field.node.lieu.field_telephone
+    - field.field.node.lieu.field_type_de_lieu
+    - field.field.node.lieu.field_ville
+    - node.type.lieu
+  module:
+    - options
+    - text
+    - user
+id: node.lieu.default
+targetEntityType: node
+bundle: lieu
+mode: default
+content:
+  field_adresse_lieu:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_capacite:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  field_code_postale:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_horaires:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_latitude:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_longitude:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_telephone:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_type_de_lieu:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_ville:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

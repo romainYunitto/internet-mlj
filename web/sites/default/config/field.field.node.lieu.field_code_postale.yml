@@ -1,0 +1,19 @@
+uuid: b348fd78-6b0c-4ded-a34c-2d4413a12e72
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_code_postale
+    - node.type.lieu
+id: node.lieu.field_code_postale
+field_name: field_code_postale
+entity_type: node
+bundle: lieu
+label: 'code postal'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

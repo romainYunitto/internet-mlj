@@ -1,0 +1,18 @@
+uuid: 6ce6a579-5b11-4292-843a-929905df72de
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Lieu
+type: lieu
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

@@ -1,0 +1,19 @@
+uuid: 97f616c4-8463-4427-8ab7-939712b4d30f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_latitude
+    - node.type.lieu
+id: node.lieu.field_latitude
+field_name: field_latitude
+entity_type: node
+bundle: lieu
+label: latitude
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
