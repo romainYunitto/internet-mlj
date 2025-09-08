@@ -64,6 +64,9 @@ class CustomApiController extends ControllerBase
 
     foreach ($file_fields as $input_name => $field_key) {
       $uploadedFile = $request->files->get($input_name);
+      if ('cv' === $input_name && is_null($uploadedFile)){
+        return new JsonResponse(['error' => 'le cv est obligatoire'], 404);
+      }
       if ($uploadedFile) {
         $filename = $uploadedFile->getClientOriginalName();
         $filepath = $real_path . '/' . $filename;
