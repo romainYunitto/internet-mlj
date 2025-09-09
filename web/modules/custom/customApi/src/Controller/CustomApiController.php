@@ -507,7 +507,7 @@ class CustomApiController extends ControllerBase
       $lat = $node->get('field_latitude')->value ?? null;
       $lon = $node->get('field_longitude')->value ?? null;
       if ($lat && $lon) {
-        if (!is_null($type) ||
+        if (!is_null($type) &&
           $node->get('field_type_de_lieu')->value == $type) {
           $features[] = [
             'type' => 'Feature',
