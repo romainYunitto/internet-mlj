@@ -64,6 +64,9 @@ class CustomApiController extends ControllerBase
 
     foreach ($file_fields as $input_name => $field_key) {
       $uploadedFile = $request->files->get($input_name);
+      if ('cv' === $input_name && is_null($uploadedFile)) {
+        return new JsonResponse(['error' => 'le cv est obligatoire'], 404);
+      }
       if ($uploadedFile) {
         $filename = $uploadedFile->getClientOriginalName();
         $filepath = $real_path . '/' . $filename;
@@ -500,16 +503,12 @@ class CustomApiController extends ControllerBase
     $nodes = Node::loadMultiple($ids);
 
     $features = [];
-    $typeLieu = null;
-    if (!is_null($type)) {
-      $typeLieu = $this->getTypeLieu($type);
-    }
     foreach ($nodes as $node) {
       $lat = $node->get('field_latitude')->value ?? null;
       $lon = $node->get('field_longitude')->value ?? null;
       if ($lat && $lon) {
-        if (!is_null($type) && ($node->get('field_type_de_lieu')->value == $typeLieu ||
-            $node->get('field_type_de_lieu')->value == $type)) {
+        if (!is_null($type) ||
+          $node->get('field_type_de_lieu')->value == $type) {
           $features[] = [
             'type' => 'Feature',
             'geometry' => ['type' => 'Point', 'coordinates' => [(float)$lon, (float)$lat]],
@@ -548,25 +547,6 @@ class CustomApiController extends ControllerBase
     return new JsonResponse(['type' => 'FeatureCollection', 'features' => $features]);
   }
 
-  private function getTypeLieu(string $type)
-  {
-    switch ($type) {
-      case 'enfance':
-        $typeLieu = "Petite enfance";
-        break;
-      case 'maternelle':
-        $typeLieu = "Maternelle";
-        break;
-      case 'elementaire':
-        $typeLieu = "Elémentaire";
-        break;
-      case 'autre':
-        $typeLieu = "Autre";
-        break;
-    }
-    return $typeLieu;
-  }
-
   public function getAgendaPeriode(): JsonResponse
   {
     $periodes = [
@@ -603,5 +583,38 @@ class CustomApiController extends ControllerBase
     return new JsonResponse([
       'values' => $values,
     ]);
+  }
+
+  public function getCardActualite(Request $request)
+  {
+    $url = $request->query->get('url');
+    $query = \Drupal::entityQuery('node')
+      ->accessCheck(TRUE)
+      ->condition('status', 1)
+      ->condition('type', "actualite");
+
+    $query->condition('field_url', $url, '=');
+    $nid = $query->execute();
+
+    if (empty($nid)) {
+      return new JsonResponse(['results' => []]);
+    }
+    $node = Node::load(reset($nid));
+    $tag_field = $node->get("field_tag");
+    foreach ($tag_field as $item) {
+      if ($item->entity) {
+        $tags_list[] = $item->entity->label();
+      }
+    }
+    $result = [
+      'id' => $node->id(),
+      'title' => $node->getTitle(),
+      'url' => $node->get('field_url')->value ?? '',
+      'image' => $this->getImageUrl($node, 'field_image'),
+      'categorie_list' => implode(', ', $tags_list),
+      'categorie_array' => $tags_list,
+    ];
+
+    return new JsonResponse(['results' => $result]);
   }
 }
