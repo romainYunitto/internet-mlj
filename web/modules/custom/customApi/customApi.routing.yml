@@ -41,3 +41,12 @@ custom_api.typeLieux:
     _title: 'Types de lieu'
   requirements:
     _custom_access: 'custom_api.bearer_service_check::access'
+
+
+custom_api.card:
+  path: '/jsonapi/custom/card-actualite'
+  defaults:
+    _controller: '\Drupal\customApi\Controller\CustomApiController::getCardActualite'
+  requirements:
+    _custom_access: 'custom_api.bearer_service_check::access'
+
